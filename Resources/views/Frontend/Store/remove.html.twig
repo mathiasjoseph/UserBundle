@@ -1,0 +1,16 @@
+{% extends "@MikyApp/profile_layout.html.twig" %}
+{% block main_bar %}
+    <div class="table-responsive">
+        {{ form_start(form, {'attr': {'novalidate': 'true', 'data-toggle': "validator"}}) }}
+        {{ form_widget(form._token) }}
+        <table class="table items">
+            <tbody>
+            <tr>
+                <td style="width: 75%"><p>Supprimer l'annonce :<span style="font-weight: bold"> "{{ miky_ad_translate_title(ad) }}"</span></p></td>
+                <td style="width: 25%"><p>{{ form_widget(form.confirm, {'attr': {'class': "btn btn-primary"}}) }}</p></td>
+            </tr>
+            </tbody>
+        </table>
+        </form>
+    </div>
+{% endblock %}

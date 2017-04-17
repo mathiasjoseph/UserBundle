@@ -1,0 +1,14 @@
+miky_admin_user:
+    resource: "@MikyUserBundle/Resources/config/routing/backend.yml"
+    prefix : /%miky_admin.admin_key_path%
+
+miky_app_user:
+    resource: "@MikyUserBundle/Resources/config/routing/frontend.yml"
+    prefix : /user
+
+miky_app_customer_security:
+    resource: "@MikyUserBundle/Resources/config/routing/front_security.yml"
+
+miky_admin_customer_security:
+    resource: "@MikyUserBundle/Resources/config/routing/back_security.yml"
+    prefix : /%miky_admin.admin_key_path%

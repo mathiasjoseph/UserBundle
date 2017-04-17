@@ -1,0 +1,235 @@
+{% extends 'MikyAppBundle::layout.html.twig' %}
+{% block content_wrap %}
+    <style>
+        .thumb-ad.store {
+            width: 130px;
+        }
+    </style>
+<div class="col-md-12 content uneboutique">
+    <div class="col-md-12" style="margin-bottom: 15px;">
+        <div style="border: #b7b7b7 1px solid; float: left; width: 100%;">
+            <div class="col-md-6" style="border-right: #b7b7b7 1px solid;padding: 15px;">
+                <div class="col-md-5">
+                    <div class="img-ad-container">
+                        {% if customer.profileImage is not empty %}
+                            {% thumbnail customer.profileImage, 'big' with {'class': 'img-reponsive store thumb-ad'} %}
+                        {% else %}
+                            <img width="200" height="150" src="{{ asset('img/aucune-image_Miky.png') }}"
+                                 class=" thumb-ad store img-responsive">
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-7">
+
+                <span style="
+        font-weight: bold;
+    "><i class="fa fa-map-marker"
+         style="font-size:12px;"></i> Adresse : </span>{% if customer.location is not empty and customer.location.latitude is not empty and customer.location.longitude is not empty %}
+                    </br>
+                    {{ customer.location.formattedAddress }}
+                    {% endif %}
+
+                    </br>
+                    <span style="
+        font-weight: bold;
+    "><i class="fa fa-phone" style="font-size:12px;"></i> Téléphone : </span>{% if customer.phone is not empty %}
+                    </br>
+                    {{ customer.phone }}
+                    {% endif %}
+
+                    </br>
+                    <span style="
+        font-weight: bold;
+    "><i class="fa fa-book" style="font-size:12px;"></i> Numéro de siren : </span>{% if customer.companyId is not empty %}
+                    </br>
+                    {{ customer.companyId }}
+                    {% endif %}
+
+                    </br>
+                    <span style="
+        font-weight: bold;
+    "><i class="fa fa-link" style="font-size:12px;"></i> Site web : </span>{% if customer.companyId is not empty %}
+                    </br>
+                    {{ customer.website }}
+                    {% endif %}
+                    <div class="col-md-12" style="padding: 0;">
+                        {% if customer.facebook is not null and customer.facebook is not empty %}
+                            <a target="_blank" href="{{ customer.facebook }}"><i class="fa fa-facebook-square fa-2x"
+                                                                                 aria-hidden="true"></i></a>
+                        {% endif %}
+                        {% if customer.twitter is not null and customer.twitter is not empty %}
+                            <a target="_blank" href="{{ customer.twitter }}"><i style="color: #2ba7d1"
+                                                                                class="fa fa-twitter-square fa-2x"
+                                                                                aria-hidden="true"></i></a>
+                        {% endif %}
+                        {% if customer.linkedin is not null and customer.linkedin is not empty %}
+                            <a target="_blank" href="{{ customer.linkedin }}"><i class="fa fa-linkedin-square fa-2x"
+                                                                                 aria-hidden="true"></i></a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="col-md-12" style="border-bottom: #adb5b5 1px solid;">
+                    <p class="pull-left" style="width: 80%;margin: 0;color: #337ab7;font-size: 24px;">
+                        {% if customer.location is not null %}
+                            <img class="flag img-responsive pull-left flag-{{ customer.location.countryShortName|lower }}"
+                                 style="margin-top: 9px !important;margin-right: 10px !important;margin-left: -15px;"/>
+                        {% endif %}
+                        {{ customer.companyName }}
+                    </p>
+                    <div class="pull-right" style="position: absolute; top: 0; right: 0;">
+                        {% include '@MikyUser/Frontend/Block/certified_button.html.twig' with {'user': customer} %}
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <p style="">Inscrit depuis le {{ customer.createdAt|date("d/m/Y") }}</p>
+                    <p>{% if customer.companyDescription is not empty %}
+                            {{ customer.companyDescription }}
+                        {% endif %}</p></div>
+
+                <div class="pull-left">
+                    <h3>{{ customer.ads|length }} Annonce[s]</h3>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div id="index" class="col-md-9 mainbar">
+
+
+        <div class="clearfix"></div>
+
+        {{ form_start(form, {'attr': {'novalidate': 'true', 'data-toggle': "validator"}}) }}
+
+
+        <div class="form-group">
+            <label>Rechercher dans la boutique:</label>
+            {{ form_errors(form.keywords) }}
+            {{ form_widget(form.keywords, {'attr': {'class': 'form-control', 'placeholder': "Mots clés"}}) }}
+
+        </div>
+        </form>
+        <div class="main-content">
+
+            <ul class="nav nav-tabs">
+                <li role="presentation" {% if app.request.query.all is empty %}
+                    class="active"
+                        {% endif %}>
+                    <a href="{{ path("miky_app_customer_store_show", {'user': customer.id}) }}"><span class="orange"
+                                                                                                          style="margin-right: 5px;">Toutes</span>
+                        {{ customer.ads|length }}</a>
+                </li>
+                <li role="presentation" {% if app.request.query.all is not empty %}
+                    class="active"
+                        {% endif %}>
+                    <a data-toggle="tab" href="#"><span class="orange"
+                                                        style="margin-right: 5px;">Recherche</span>{% if app.request.query.all is not empty %}{{ pagination.getTotalItemCount }}{% endif %}
+                    </a>
+                </li>
+                <li role="presentation" class="dropdown pull-right">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                       aria-expanded="false">{{ "miky.ui.per_page"|trans }} <span class="caret"></span> </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="{{ path("miky_app_ad_search", app.request.query.all|merge({"perPage": 10})) }}">10</a>
+                        </li>
+                        <li>
+                            <a href="{{ path("miky_app_ad_search", app.request.query.all|merge({"perPage": 50})) }}">50</a>
+                        </li>
+                        <li>
+                            <a href="{{ path("miky_app_ad_search", app.request.query.all|merge({"perPage": 100})) }}">100</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="pull-right dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                        Trier par<span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="{{ path("miky_app_ad_search", app.request.query.all|merge({"sortType": "date"})) }}">Date</a>
+                        </li>
+                        <li>
+                            <a href="{{ path("miky_app_ad_search", app.request.query.all|merge({"sortType": "price"})) }}">Prix</a>
+                        </li>
+                    </ul>
+                </li>
+                <div class="clearfix"></div>
+            </ul>
+            <div class="tab-content">
+                <div id="ad-results" style="
+    display: block !important;
+" class="tab-pane fade in active">
+
+                    {% for ad in pagination %}
+                        <div class="row item {% if loop.last == true and pagination|length > 1 %}last-child{% endif %}">
+                            {% include '@MikyAd/Frontend/Sub/ad_item.html.twig' with {'ad': ad} %}
+                        </div>
+
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="navigation">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+
+
+    </div>
+    <div class="col-md-3 sidebar">
+        <div style="width:100%;height:100%;background-color: #e4e4e4 ; height: 100vh"></div>
+    </div>
+
+    {% endblock %}
+    {% block javascripts %}
+    {{ parent() }}
+    <div id="fb-root"></div>
+    <script>(function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.8";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
+    <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+
+    <script>
+      $('a[href^="#"]').click(function () {
+        var the_id = $(this).attr("href");
+        $('html, body').animate({
+          scrollTop: $(the_id).offset().top - 200
+        }, 'slow');
+        return false;
+      });
+    </script>
+    {% if customer.location is not empty and customer.location.latitude is not empty and customer.location.longitude is not empty %}
+        <script>
+          function initMap () {
+            var myLatLng = {lat: {{ customer.location.latitude }}, lng: {{ customer.location.longitude }}};
+
+            var map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 15,
+              center: myLatLng
+            });
+
+            var marker = new google.maps.Marker({
+              position: myLatLng,
+              map: map,
+              title: {{ customer.companyName }}
+            });
+          }
+
+        </script>
+        <script
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6NabBNHychXDTRRF8u1c63HeqX1yvoQQ&callback=initMap"
+                async defer></script>
+    {% endif %}
+</div>
+{% endblock %}

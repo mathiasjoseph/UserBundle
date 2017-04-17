@@ -1,0 +1,79 @@
+miky:
+    employee:
+        edit: Editer le profil
+    customer:
+        edit: Editer le clients
+    ui:
+        employees: Employés
+        customers: Clients
+        manage_employees: Gérer les employés
+        manage_customers: Gérer les clients
+        female: Femme
+        male: Homme
+        history: Historique
+        login: Connexion
+        logout: Déconnexion
+        username: Nom d'utilisateur
+        profile_image: Photo de profil
+        report_by: Signalé par
+        user_reports: Signalements
+        manage_user_report: Gérer les signalements
+        create_my_store: Créer ma boutique
+        my_store: Ma boutique
+        anonymous: Anonyme
+        report: Signaler
+        add_to_favorites: Ajouter au favoris
+        print: Imprimer
+        fraud: Fraude
+        duplicate_ad: Annonce en double
+        wrong_category: Mauvaise catégorie
+        already_sold: Déja vendu
+        vulgarity: Vulgarité
+        other_abuse: Autre abus
+        store: Boutique
+        stores: Boutiques
+        store_list: Liste des boutiques
+        manage_store: Gestion des boutiques
+        certification_request: Demande de certification
+        certification_request_list: Liste des demandes
+        certification_request_pending_list: Liste des demandes en attente
+        certification_requests: Demandes de certification
+        manage_certification_request: Gérer les demandes de certification
+        companyId: SIREN
+        activity: Activité
+        companyName: Nom de l'entreprise
+        companyDescription: Description de l'entreprise
+        become_certified: Devenir Certified
+        certification_request_is_pending: Demande de certification en cours d'études
+        contact_the_announcer: Contacter l'annonceur
+        see_the_store: Voir la boutique
+        my_store: Ma boutique
+        photos: Photos
+    mail:
+        new_certification_request:
+            subject: Une nouvelle demande de certification
+            message: |
+                Bonjour !
+
+                Un utilisateur vient de faire une nouvelle demande certification.
+
+                Cordialement,
+                L'équipe.
+        certification_confirmation:
+            subject: Votre compte est désormais certified !
+            message: |
+                Bonjour %username% !
+
+                Votre compte est désormais certified.
+
+                Cordialement,
+                L'équipe.
+        certification_request:
+            subject: Demande de certification en cours d'études !
+            message: |
+                Bonjour %username% !
+
+                Votre annonce demande de certification en cours d'études.
+
+                Cordialement,
+                L'équipe.

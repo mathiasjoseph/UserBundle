@@ -1,0 +1,15 @@
+miky_app_customer_registration_register:
+    path:      /
+    defaults:  { _controller: MikyUserBundle:Frontend/Registration:register}
+
+miky_app_customer_registration_check_email:
+    path:      /check-email
+    defaults:  { _controller: MikyUserBundle:Frontend/Registration:checkEmail}
+
+miky_app_customer_registration_confirm:
+    path:      /confirm/{token}
+    defaults:  { _controller: MikyUserBundle:Frontend/Registration:confirm}
+
+miky_app_customer_registration_confirmed:
+    path:      /confirmed
+    defaults:  { _controller: MikyUserBundle:Frontend/Registration:confirmed}

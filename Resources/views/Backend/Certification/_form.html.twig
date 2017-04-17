@@ -1,0 +1,29 @@
+{{ form_errors(form) }}
+
+        {% if resource.id is not null %}
+
+            <div class="form-group">
+
+                <label class="col-md-2 control-label" for="miky_ad_admin_validated">Validé(s)<span class="required" aria-required="true"> * </span></label>
+                <div class="col-md-10 form-group">
+                    {% if resource.validated  %}
+                        Oui
+                    {% else %}
+                        <a class="btn btn-success" href="{{ path('miky_admin_certification_request_validate', {'id': resource.id}) }}">
+                            <i class="fa fa-check"></i>Valider</a>
+                    {% endif %}
+                </div></div>
+
+        {% endif %}
+        {% if resource.files is not null %}
+            <label class="col-md-2 control-label" for="">Documents</label>
+            <div class="col-md-10 form-group">
+                {% for f in resource.files %}
+                    <a href="{% path f, 'reference' %}" >
+                        {% path f, 'reference' %}
+                    </a>
+                {% endfor %}
+            </div>
+
+        {% endif %}
+{{ form_widget(form) }}

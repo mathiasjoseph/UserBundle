@@ -1,0 +1,5 @@
+miky_app_customer_report_ad:
+    path:      /ad/{ad}
+    defaults:  { _controller: MikyUserBundle:Frontend/UserReport:reportOnAd}
+
+

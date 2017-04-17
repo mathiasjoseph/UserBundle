@@ -1,0 +1,28 @@
+miky_app_cutomer_profile:
+    resource: "@MikyUserBundle/Resources/config/routing/front_profile.yml"
+    prefix : /profile
+
+miky_app_customer_registration:
+    resource: "@MikyUserBundle/Resources/config/routing/front_registration.yml"
+    prefix : /registration
+
+miky_app_customer_resetting:
+    resource: "@MikyUserBundle/Resources/config/routing/front_resetting.yml"
+    prefix : /resetting
+
+miky_app_customer_history:
+    resource: "@MikyUserBundle/Resources/config/routing/front_history.yml"
+    prefix : /history
+
+
+miky_app_customer_report:
+    resource: "@MikyUserBundle/Resources/config/routing/front_report.yml"
+    prefix : /report
+
+miky_app_customer_store:
+    resource: "@MikyUserBundle/Resources/config/routing/front_store.yml"
+    prefix : /store
+
+miky_app_customer_certification:
+    resource: "@MikyUserBundle/Resources/config/routing/front_certification.yml"
+    prefix : /certification

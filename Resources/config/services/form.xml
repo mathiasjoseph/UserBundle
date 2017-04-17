@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+
+        <service id="miky.form.type.backend.customer" class="Miky\Bundle\UserBundle\Form\Type\Backend\CustomerAdminType">
+            <tag name="form.type" alias="miky_customer_admin"/>
+        </service>
+        <service id="miky.form.type.backend.user_report" class="Miky\Bundle\UserBundle\Form\Type\Backend\UserReportAdminType">
+            <tag name="form.type" alias="miky_user_report_admin"/>
+        </service>
+
+        <service id="miky.form.type.backend.certification" class="Miky\Bundle\UserBundle\Form\Type\Backend\CertificationRequestAdminType">
+            <tag name="form.type" alias="miky_certification_request_admin"/>
+        </service>
+        <service id="miky.form.type.backend.employee" class="Miky\Bundle\UserBundle\Form\Type\Backend\EmployeeAdminType">
+            <tag name="form.type" alias="miky_employee_admin"/>
+        </service>
+        <service id="miky.form.type.frontend.customer_profile" class="Miky\Bundle\UserBundle\Form\Type\Frontend\CustomerProfileType">
+            <argument id="miky_language_manager" type="service"/>
+            <tag name="form.type" alias="miky_customer_profile_front"/>
+        </service>
+
+        <!--<service id="miky_user.registration_customer.form.handler" class="Miky\Bundle\UserBundle\Form\Handler\Frontend\RegistrationFormHandler" scope="request">-->
+            <!--<argument type="service" id="sonata.user.registration.form" />-->
+            <!--<argument type="service" id="request" />-->
+            <!--<argument type="service" id="miky_customer_manager" />-->
+            <!--<argument type="service" id="miky_bundle_user.mailer.mailer" />-->
+            <!--<argument type="service" id="fos_user.util.token_generator" />-->
+        <!--</service>-->
+    </services>
+
+</container>

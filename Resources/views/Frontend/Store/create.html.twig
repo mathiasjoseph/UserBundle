@@ -1,0 +1,118 @@
+{% extends "@MikyApp/profile_layout.html.twig" %}
+
+{% form_theme form 'MikyAppBundle:Form:theme.html.twig' %}
+{% set setting_ad = miky_settings('ad') %}
+
+
+ {% block main_bar %}
+     {{ form_start(form, {'attr': {'novalidate': 'true', 'data-toggle': "validator"}}) }}
+
+     {{ form_widget(form._token) }}
+
+
+     <div class="panel panel-default">
+         <div class="panel-heading"><b>{{ "miky.ui.create_my_store"|trans|upper }}</b></div>
+         <div class="panel-body">
+             <div class="form-group">
+                 <label>{{ "miky.ui.name"|trans|upper }}:</label>
+                 {{ form_errors(form.name) }}
+                 {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+
+             </div>
+             <div class="form-group">
+                 <label>DESCRIPTION:</label>
+                 {{ form_errors(form.description) }}
+                 {{ form_widget(form.description, {'attr': {'class': 'form-control', 'rows': "8"}}) }}
+             </div>
+             <div class="form-group">
+                 <label>TELEPHONE:</label>
+                 {{ form_errors(form.phone) }}
+                 {{ form_widget(form.phone, {'attr': {'class': 'form-control'}}) }}
+             </div>
+             <div class="form-group">
+                 <label>ADRESSE:</label>
+
+                 {{ form_widget(form.location.formattedAddress, {'id': 'user_input_autocomplete_address', 'attr': {'class': 'form-control disabled', 'placeholder': 'miky.location.please_type_address'|trans}}) }}
+             </div>
+             <div id="map" style="width: 100%; height: 300px; position: relative; overflow: hidden;">
+
+             </div>
+             {{ form_widget(form.location.streetNumber, {'id': 'street_number'}) }}
+             {{ form_widget(form.location.street, {'id': 'route'}) }}
+             {{ form_widget(form.location.postalCode, {'id': 'postal_code'}) }}
+             {{ form_widget(form.location.city, {'id': 'locality'}) }}
+             {{ form_widget(form.location.country, {'id': 'country'}) }}
+             {{ form_widget(form.location.countryShortName, {'id': 'country_short'}) }}
+             {{ form_widget(form.location.administrativeAreaLevel2, {'id': 'administrative_area_level_2'}) }}
+             {{ form_widget(form.location.administrativeAreaLevel1, {'id': 'administrative_area_level_1'}) }}
+             {{ form_widget(form.location.latitude, {'id': 'lat'}) }}
+             {{ form_widget(form.location.longitude, {'id': 'lng'}) }}
+         </div>
+     </div>
+
+     <div class="panel panel-default">
+         <div class="panel-heading"><b>Images</b></div>
+         <div class="panel-body">
+
+             <div id="image-fields-list"
+                  data-prototype="{{ form_widget(form.images.vars.prototype)|e }}">
+                 {% for image in form.images %}
+                     <div class="col-md-4">
+                         {{ form_errors(image) }}
+                         {{ form_widget(image) }}
+                     </div>
+                 {% endfor %}
+             </div>
+
+         </div>
+          </div>
+
+     <hr>
+     <button class="btn btn-default" type="submit">{{ "miky.ui.send"|trans|upper }}</button>
+
+     </b></form>
+ {% endblock %}
+{% block javascripts_level_page %}
+
+    <script type="text/javascript"
+            src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyC4qRdwcWnBSD-9E9X4mO92QxzWG5MvWwk&language={{ app.request.locale }}">
+    </script>
+    <script src="{{ asset('bundles/mikyapp/js/google/autocomplete.js') }}"></script>
+    <script>
+        function removeAnotherImage(number) {
+            $("#image-fields-list .col-md-4").get(number).remove();
+            if ($("#image-fields-list .col-md-4").length == 0) {
+                jQuery('#remove-another-image').addClass("hide");
+            }
+            if ($("#image-fields-list .col-md-4").length < maxImages) {
+                jQuery('#add-another-image').removeClass("disabled");
+            }
+        }
+        function addAnotherImage() {
+            var imageList = jQuery('#image-fields-list');
+            var newWidget = imageList.attr('data-prototype');
+            newWidget = newWidget.replace(/__name__/g, $("#image-fields-list .col-md-4").length);
+            var newLi = jQuery(' <div class="col-md-4"></div>').html(newWidget);
+            newLi.appendTo(imageList);
+            setImageInput($(".image-file-input"));
+        }
+        function changeMaxImage(number) {
+            maxImages = number;
+            if ($("#image-fields-list .col-md-4").length > number) {
+                removeAnotherImage($("#image-fields-list .col-md-4").length - 1);
+                changeMaxImage(number);
+            }
+            if ($("#image-fields-list .col-md-4").length < number) {
+                addAnotherImage();
+                changeMaxImage(number);
+            }
+        }
+
+    </script>
+    <script type="text/javascript">
+        var maxImages = {{ setting_ad.max_image_number }};
+        changeMaxImage({{ setting_ad.max_image_number }});
+    </script>
+
+
+{% endblock %}

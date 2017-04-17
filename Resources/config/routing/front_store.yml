@@ -1,0 +1,9 @@
+miky_app_customer_store_show:
+    path:      /{user}/show
+    defaults:  { _controller: MikyUserBundle:Frontend/Store:show }
+    methods:  GET
+
+miky_app_customer_store_list:
+    path:      /list
+    defaults:  { _controller: MikyUserBundle:Frontend/Store:list }
+

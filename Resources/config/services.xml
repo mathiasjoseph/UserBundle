@@ -1,16 +1,24 @@
-<?xml version="1.0" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://symfony.com/schema/dic/services"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services
+        http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-<container xmlns="http://symfony.com/schema/dic/services"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
-
-    <!--
+    <imports>
+        <import resource="services/controller.xml" />
+        <import resource="services/doctrine.xml" />
+        <import resource="services/manager.xml" />
+        <import resource="services/form.xml"/>
+        <import resource="services/registration.xml"/>
+        <import resource="services/mailer.xml"/>
+        <import resource="services/listener.xml"/>
+    </imports>
     <services>
-        <service id="miky_user.example" class="Miky\Bundle\UserBundle\Example">
-            <argument type="service" id="service_id" />
-            <argument>plain_value</argument>
-            <argument>%parameter_name%</argument>
+        <service id="miky_bundle_user.installer.user_installer" class="Miky\Bundle\UserBundle\Installer\UserInstaller">
+            <argument id="miky_employee_manager" type="service"/>
+            <argument id="miky_customer_manager" type="service"/>
+            <tag name="miky.installer"/>
         </service>
     </services>
-    -->
+
 </container>

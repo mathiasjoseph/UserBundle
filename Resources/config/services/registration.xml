@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+
+        <service id="miky_user.registration.form" factory-method="createNamed" factory-service="form.factory" class="Symfony\Component\Form\Form">
+            <argument>miky_user_registration_form</argument>
+            <argument>miky_user_registration</argument>
+            <argument>null</argument>
+            <argument type="collection">
+                <argument key="validation_groups">%fos_user.registration.form.validation_groups%</argument>
+            </argument>
+        </service>
+
+        <service id="miky_bundle_user.form_type_frontend.registration_form_type" class="Miky\Bundle\UserBundle\Form\Type\Frontend\RegistrationFormType">
+            <tag name="form.type" alias="miky_user_registration" />
+            <argument>%customer.model.class%%</argument>
+        </service>
+
+
+    </services>
+
+</container>

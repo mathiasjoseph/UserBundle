@@ -1,0 +1,54 @@
+{% extends "@MikyApp/layout.html.twig" %}
+{% block content %}
+    <div class="container">
+        <div class="col-md-4 col-md-offset-4">
+            {{ form_start(form, {'action': path('hwi_oauth_connect_registration', {'key': key}), 'attr': {'class': 'hwi_oauth_registration_register'}}) }}
+            {% if not form.vars.valid %}
+            <div class="alert alert-danger alert-error">
+                {{ form_errors(form.username) }}
+                {{ form_errors(form.email) }}
+                {{ form_errors(form.plainPassword.first) }}
+                {{ form_errors(form.plainPassword.second) }}
+            </div>
+          {% endif %}
+            <div class="panel panel-default login" style="margin-top: 50px;">
+
+                <div class="panel-heading"><h3 style="margin-top:10px; font-weight: normal">{{ 'header.register' | trans({'%name%': userInformation.realName}, 'HWIOAuthBundle') }}</h3></div>
+                <div class="panel-body text-center">
+                    <div class="form-group">
+                        <label>NOM D'UTILISATEUR:</label>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1"><i class="fa fa-user"></i></span>
+                            {{ form_widget(form.username, { 'attr': {"class": "form-control", "placeholder": "Entrez le nom d'utilisateur"}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>EMAIL:</label>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1"><i class="fa fa-user"></i></span>
+                            {{ form_widget(form.email, { 'attr': {"class": "form-control", "placeholder": "Entrez l'adresse email"}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>MOT DE PASSE:</label>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon2"><i class="fa fa-user"></i></span>
+                            {{ form_widget(form.plainPassword.first, { 'attr': {"class": "form-control", "placeholder": "Entrer le mot de passe"}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>CONFIRMER:</label>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon2"><i class="fa fa-user"></i></span>
+                            {{ form_widget(form.plainPassword.second, { 'attr': {"class": "form-control", "placeholder": "Répeter le mot de passe"}}) }}
+                        </div>
+                    </div>
+
+                </div>
+                <div class="panel-footer"><button class="btn btn-default" type="submit">{{ 'connect.registration.submit'|trans({}, 'HWIOAuthBundle') }}</button> <a href="{{ path('miky_app_customer_security_login') }}" class="btn"> {{ 'connect.registration.cancel' | trans({}, 'HWIOAuthBundle') }}</a></div>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+{% endblock content %}

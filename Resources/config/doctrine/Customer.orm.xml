@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity repository-class="Miky\Bundle\UserBundle\Repository\CustomerRepository"
+            name="Miky\Bundle\UserBundle\Entity\Customer">
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO"/>
+        </id>
+        <field name="facebookId" type="string" nullable="true"/>
+        <field name="lastname" type="string" nullable="true"/>
+        <field name="firstname" type="string" nullable="true"/>
+
+        <field name="twitterId" type="string" nullable="true"/>
+        <field name="googleId" type="string" nullable="true"/>
+        <field name="companyName" type="string" nullable="true"/>
+        <field name="companyId" type="string" nullable="true"/>
+        <field name="activity" type="string" nullable="true"/>
+        <field name="companyDescription" type="text" nullable="true"/>
+        <one-to-many target-entity="Miky\Bundle\UserBundle\Entity\History" mapped-by="user" field="history">
+            <cascade><cascade-all/></cascade>
+        </one-to-many>
+        <many-to-one field="location" target-entity="Miky\Bundle\LocationBundle\Entity\Location">
+            <join-column name="location_id" referenced-column-name="id" on-delete="CASCADE"/>
+            <cascade>
+                <cascade-all/>
+            </cascade>
+        </many-to-one>
+        <one-to-many field="ads" target-entity="Miky\Bundle\AdBundle\Entity\Ad" mapped-by="user">
+            <cascade>
+                <cascade-all/>
+            </cascade>
+        </one-to-many>
+
+        <one-to-one field="profileImage" target-entity="Miky\Bundle\MediaBundle\Entity\Media">
+            <cascade>
+                <cascade-all/>
+            </cascade>
+        </one-to-one>
+        <one-to-one field="preference" target-entity="Miky\Bundle\UserBundle\Entity\UserPreference" mapped-by="customer">
+            <cascade><cascade-all/></cascade>
+        </one-to-one>
+        <field name="languagesSpoken" type="array" nullable="true"/>
+        <one-to-one field="preferedLocation" target-entity="Miky\Bundle\LocationBundle\Entity\Location">
+            <join-column name="prefered_location_id" referenced-column-name="id" on-delete="SET NULL"/>
+            <cascade><cascade-all/></cascade>
+        </one-to-one>
+          <field name="facebook" type="string" nullable="true"/>
+        <field name="twitter" type="string" nullable="true"/>
+        <field name="linkedin" type="string" nullable="true"/>
+        <field name="phone" type="string" nullable="true"/>
+        <field name="mobile" type="string" nullable="true"/>
+        <field name="googleplus" type="string" nullable="true"/>
+        <many-to-many target-entity="Miky\Bundle\AdBundle\Entity\Ad"  field="favoriteAds">
+            <join-table name="customer_favorite_ad" >
+                <join-columns>
+                    <join-column name="customer_id" referenced-column-name="id" on-delete="CASCADE"/>
+                </join-columns>
+                <inverse-join-columns>
+                    <join-column name="ad_id" referenced-column-name="id" on-delete="CASCADE" />
+                </inverse-join-columns>
+            </join-table>
+            <cascade>
+                <cascade-all/>
+            </cascade>
+        </many-to-many>
+    </entity>
+</doctrine-mapping>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity repository-class="Miky\Bundle\UserBundle\Repository\HistoryRepository" name="Miky\Bundle\UserBundle\Entity\History">
+    <id name="id" type="integer" column="id">
+      <generator strategy="AUTO"/>
+    </id>
+    <many-to-one target-entity="Miky\Bundle\UserBundle\Entity\Customer" field="user" inversed-by="history">
+      <join-column name="user_id" referenced-column-name="id" on-delete="SET NULL"/>
+    </many-to-one>
+    <many-to-one field="ad" target-entity="Miky\Bundle\AdBundle\Entity\Ad">
+      <join-column name="ad_id" referenced-column-name="id" on-delete="SET NULL"/>
+    </many-to-one>
+    <field name="adSearch" type="object"/>
+    <field name="type" type="integer"/>
+  </entity>
+</doctrine-mapping>
