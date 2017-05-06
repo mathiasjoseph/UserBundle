@@ -1,0 +1,18 @@
+miky_user_admin_user:
+    resource: |
+        alias: miky.user
+        section: admin
+        context: admin
+        templates: MikyAdminBundle:Crud
+        redirect: update
+        grid: miky_admin_user
+        form: miky_customer_admin
+        permission: true
+        vars:
+            all:
+                subheader: miky.ui.manage_customers
+                templates:
+                    #form: MikyAdminBundle:Product:_form.html.twig
+            index:
+                icon: cube
+    type: miky.resource

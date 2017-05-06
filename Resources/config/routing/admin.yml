@@ -1,0 +1,11 @@
+miky_user_admin_security:
+    resource: "@MikyUserBundle/Resources/config/routing/admin/security.yml"
+    prefix : /
+
+miky_user_admin_user:
+    resource: "@MikyUserBundle/Resources/config/routing/admin/user.yml"
+    prefix : /
+
+
+
+

@@ -2,7 +2,7 @@ miky_resource:
     drivers:
         - doctrine/orm
     resources:
-        miky.customer:
+        miky.user:
             classes:
                 model: %customer.model.class%
             contexts:
@@ -27,7 +27,7 @@ miky_resource:
                     controller: Miky\Bundle\UserBundle\Controller\Backend\CertificationRequestAdminController
 miky_grid:
     grids:
-        miky_admin_customer:
+        miky_user_admin_user:
             driver:
                 options:
                     class: %customer.model.class%

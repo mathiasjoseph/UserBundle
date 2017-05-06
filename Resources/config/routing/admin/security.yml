@@ -1,11 +1,11 @@
-miky_admin_employee_security_login:
+miky_user_admin_employee_security_login:
     path:      /login
     defaults:  { _controller: MikyUserBundle:Backend/Security:login }
 
-miky_admin_employee_security_logout:
+miky_user_admin_employee_security_logout:
     path:      /logout
     defaults:  { _controller: MikyUserBundle:Backend/Security:logout }
 
-miky_admin_employee_security_login_check:
+miky_user_admin_employee_security_login_check:
     path:      /login_check
     defaults:  { _controller: MikyUserBundle:Backend/Security:check }
