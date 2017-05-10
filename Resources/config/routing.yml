@@ -1,6 +1,6 @@
 miky_user_admin:
     resource: "@MikyUserBundle/Resources/config/routing/admin.yml"
-    prefix : /%miky_admin.admin_key_path%
+    prefix : /
 
 #miky_user_front:
 #    resource: "@MikyUserBundle/Resources/config/routing/front.yml"

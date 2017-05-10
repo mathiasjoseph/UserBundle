@@ -4,6 +4,8 @@ miky:
     customer:
         edit: Editer le clients
     ui:
+        users_list: Liste des utilisateurs
+        users: Utilisateurs
         employees: Employés
         customers: Clients
         manage_employees: Gérer les employés

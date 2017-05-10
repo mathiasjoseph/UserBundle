@@ -15,4 +15,4 @@ miky_user_admin_user:
                     #form: MikyAdminBundle:Product:_form.html.twig
             index:
                 icon: cube
-    type: miky.resource
+    type: miky.resource_admin
