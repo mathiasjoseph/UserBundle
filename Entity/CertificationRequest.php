@@ -5,7 +5,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 
 use Miky\Bundle\LocationBundle\Entity\Location;
-use Miky\Bundle\MediaBundle\Model\MediaInterface;
+use Miky\Component\Media\Model\MediaInterface;
 use Miky\Bundle\OptionBundle\Entity\UserPackage;
 use Miky\Component\Core\Model\CommonModelInterface;
 use Miky\Component\Core\Model\CommonModelTrait;

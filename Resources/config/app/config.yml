@@ -1,6 +1,4 @@
 miky_resource:
-    drivers:
-        - doctrine/orm
     resources:
         miky.user:
             classes:
@@ -14,17 +12,6 @@ miky_resource:
             contexts:
                 admin:
                     controller: Miky\Bundle\UserBundle\Controller\Backend\CustomerAdminController
-        miky.user_report:
-            classes:
-                model: %user_report.entity.class%
-            contexts:
-                admin: ~
-        miky.certification_request:
-            classes:
-                model: %certification_request.entity.class%
-            contexts:
-                admin:
-                    controller: Miky\Bundle\UserBundle\Controller\Backend\CertificationRequestAdminController
 miky_grid:
     grids:
         miky_user_admin_user:

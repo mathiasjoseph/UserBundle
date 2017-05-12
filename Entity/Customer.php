@@ -6,7 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Miky\Bundle\CommentBundle\Model\CommentInterface;
 use Miky\Bundle\LocationBundle\Entity\Location;
-use Miky\Bundle\MediaBundle\Model\MediaInterface;
+use Miky\Component\Media\Model\MediaInterface;
 use Miky\Bundle\UserBundle\Model\Customer as BaseCustomer;
 use Miky\Component\Core\Model\CommonModelInterface;
 use Miky\Component\Core\Model\CommonModelTrait;

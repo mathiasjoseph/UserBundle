@@ -8,7 +8,7 @@ use Miky\Bundle\AdBundle\Entity\Ad;
 
 
 use Miky\Bundle\CommentBundle\Model\CommentInterface;
-use Miky\Bundle\MediaBundle\Model\MediaInterface;
+use Miky\Component\Media\Model\MediaInterface;
 use Miky\Bundle\UserBundle\Model\Employee as BaseEmployee;
 use Miky\Component\Core\Model\CommonModelTrait;
 use Miky\Component\Resource\Model\ResourceInterface;
