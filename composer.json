@@ -12,7 +12,6 @@
   "license" : [
     "MIT"
   ],
-  "minimum-stability": "dev",
   "require" : {
     "php": ">=5.3.9",
     "doctrine/doctrine-bundle": "~1.4",
