@@ -2,6 +2,7 @@
 
 namespace Miky\Bundle\UserBundle\DependencyInjection;
 
+use Miky\Bundle\CoreBundle\DependencyInjection\AbstractCoreExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
@@ -13,7 +14,7 @@ use Symfony\Component\DependencyInjection\Loader;
  *
  * @link http://symfony.com/doc/current/cookbook/bundles/extension.html
  */
-class MikyUserExtension extends Extension implements PrependExtensionInterface
+class MikyUserExtension extends AbstractCoreExtension implements PrependExtensionInterface
 {
     /**
      * {@inheritdoc}
