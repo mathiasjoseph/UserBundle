@@ -11,5 +11,8 @@ use Symfony\Component\Yaml\Yaml;
 
 class MikyUserBundle extends Bundle
 {
-
+    public function getParent()
+    {
+        return 'FOSUserBundle';
+    }
 }

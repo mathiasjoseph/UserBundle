@@ -26,6 +26,13 @@ class MikyUserExtension extends AbstractCoreExtension implements PrependExtensio
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
+
+        $this->remapParametersNamespaces($config, $container, array(
+            '' => array(
+                'user_class' => 'miky_user.model.user.class',
+                'employee_class' => 'miky_user.model.employee.class',
+            ),
+        ));
     }
 
     public function prepend(ContainerBuilder $container)
