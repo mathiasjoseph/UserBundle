@@ -6,15 +6,14 @@
  * Time: 11:51
  */
 
-namespace Miky\Bundle\UserBundle\Manager;
+namespace Miky\Bundle\UserBundle\Doctrine;
 
 
 use Doctrine\Common\Persistence\ObjectManager;
-use FOS\UserBundle\Doctrine\UserManager;
 use FOS\UserBundle\Util\CanonicalizerInterface;
 use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
 
-class CustomerManager extends UserManager
+class UserManager extends \FOS\UserBundle\Doctrine\UserManager
 {
 
     /**

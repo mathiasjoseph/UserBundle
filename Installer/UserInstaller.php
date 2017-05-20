@@ -10,7 +10,7 @@ namespace Miky\Bundle\UserBundle\Installer;
 
 
 use Miky\Bundle\InstallerBundle\Model\InstallerInterface;
-use Miky\Bundle\UserBundle\Manager\CustomerManager;
+use Miky\Bundle\UserBundle\Manager\UserManager;
 use Miky\Bundle\UserBundle\Manager\EmployeeManager;
 
 class UserInstaller implements InstallerInterface
@@ -23,7 +23,7 @@ class UserInstaller implements InstallerInterface
      * UserInstaller constructor.
      * @param $employeeManager
      */
-    public function __construct(EmployeeManager $employeeManager, CustomerManager $customerManager)
+    public function __construct(EmployeeManager $employeeManager, UserManager $customerManager)
     {
         $this->employeeManager = $employeeManager;
         $this->customerManager = $customerManager;

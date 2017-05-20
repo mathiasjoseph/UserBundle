@@ -7,18 +7,10 @@
     <imports>
         <import resource="services/controller.xml" />
         <import resource="services/doctrine.xml" />
-        <import resource="services/manager.xml" />
         <import resource="services/form.xml"/>
         <import resource="services/registration.xml"/>
         <import resource="services/mailer.xml"/>
         <import resource="services/listener.xml"/>
+        <import resource="services/security.xml"/>
     </imports>
-    <services>
-        <service id="miky_bundle_user.installer.user_installer" class="Miky\Bundle\UserBundle\Installer\UserInstaller">
-            <argument id="miky_employee_manager" type="service"/>
-            <argument id="miky_customer_manager" type="service"/>
-            <tag name="miky.installer"/>
-        </service>
-    </services>
-
 </container>

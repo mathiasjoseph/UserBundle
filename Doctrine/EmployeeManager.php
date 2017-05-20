@@ -6,7 +6,7 @@
  * Time: 11:52
  */
 
-namespace Miky\Bundle\UserBundle\Manager;
+namespace Miky\Bundle\UserBundle\Doctrine;
 
 
 use Doctrine\Common\Persistence\ObjectManager;
