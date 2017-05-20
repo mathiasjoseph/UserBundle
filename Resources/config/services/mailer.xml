@@ -7,11 +7,6 @@
             <argument type="service" id="router" />
             <argument type="service" id="templating" />
         </service>
-        <service id="miky_certification_mailer" class="Miky\Bundle\UserBundle\Mailer\CertificationMailer">
-            <argument type="service" id="mailer" />
-            <argument type="service" id="router" />
-            <argument type="service" id="templating" />
-            <argument type="service" id="miky.settings.manager" />
-        </service>
+
     </services>
 </container>

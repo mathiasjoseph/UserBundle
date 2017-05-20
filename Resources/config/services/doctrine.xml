@@ -4,11 +4,5 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services
         http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-    <parameters>
-        <parameter key="employee.model.class">Miky\Bundle\UserBundle\Entity\Employee</parameter>
-        <parameter key="customer.model.class">Miky\Bundle\UserBundle\Entity\Customer</parameter>
-        <parameter key="history.entity.class">Miky\Bundle\UserBundle\Entity\History</parameter>
-        <parameter key="user_report.entity.class">Miky\Bundle\UserBundle\Entity\UserReport</parameter>
-        <parameter key="certification_request.entity.class">Miky\Bundle\UserBundle\Entity\CertificationRequest</parameter>
-    </parameters>
+
 </container>
