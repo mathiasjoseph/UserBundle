@@ -9,13 +9,13 @@ miky_resource:
     resources:
         miky.user:
             classes:
-                model: %customer.model.class%
+                model: %miky_user.model.user.class%
             contexts:
                 admin:
                     controller: Miky\Bundle\UserBundle\Controller\Backend\CustomerAdminController
         miky.employee:
             classes:
-                model: %employee.model.class%
+                model: %miky_user.model.employee.class%
             contexts:
                 admin:
                     controller: Miky\Bundle\UserBundle\Controller\Backend\CustomerAdminController
@@ -24,7 +24,7 @@ miky_grid:
         miky_user_admin_user:
             driver:
                 options:
-                    class: %customer.model.class%
+                    class: %miky_user.model.user.class%
             sorting:
                 confirmedAt:
                     path: confirmedAt
@@ -64,7 +64,7 @@ miky_grid:
         miky_admin_customer_certified:
             driver:
                 options:
-                    class: %customer.model.class%
+                    class: %miky_user.model.user.class%
                     repository:
                         method: getCertifiedQueryBuilder
             sorting:
@@ -106,7 +106,7 @@ miky_grid:
         miky_admin_employee:
             driver:
                 options:
-                    class: %employee.model.class%
+                    class: %miky_user.model.employee.class%
             sorting:
                 confirmedAt:
                     path: confirmedAt
