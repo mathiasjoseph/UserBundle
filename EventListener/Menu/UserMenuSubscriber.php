@@ -27,25 +27,25 @@ class UserMenuSubscriber implements EventSubscriberInterface
     {
         $menu = $event->getMenu();
 
-        $employeeSubMenu = $menu
-            ->addChild('employee')
-            ->setLabel('miky.ui.employees')
-            ->setLabelAttribute('icon', 'users')
-        ;
-        $userSubMenu = $menu
-            ->addChild('user')
-            ->setLabel('miky.ui.users')
-            ->setLabelAttribute('icon', 'users')
-        ;
-        $l = $userSubMenu
-            ->addChild('users_list', ['route' => 'miky_admin_user_index'])
-            ->setLabel('miky.ui.users_list')
-            ->setLabelAttribute('icon', 'bullhorn')
-        ;
-        $l
-            ->addChild('users_list', ['route' => 'miky_admin_user_index'])
-            ->setLabel('miky.ui.users_list')
-            ->setLabelAttribute('icon', 'bullhorn')
-        ;
+//        $employeeSubMenu = $menu
+//            ->addChild('employee')
+//            ->setLabel('miky.ui.employees')
+//            ->setLabelAttribute('icon', 'users')
+//        ;
+//        $userSubMenu = $menu
+//            ->addChild('user')
+//            ->setLabel('miky.ui.users')
+//            ->setLabelAttribute('icon', 'users')
+//        ;
+//        $l = $userSubMenu
+//            ->addChild('users_list', ['route' => 'miky_admin_user_index'])
+//            ->setLabel('miky.ui.users_list')
+//            ->setLabelAttribute('icon', 'bullhorn')
+//        ;
+//        $l
+//            ->addChild('users_list', ['route' => 'miky_admin_user_index'])
+//            ->setLabel('miky.ui.users_list')
+//            ->setLabelAttribute('icon', 'bullhorn')
+//        ;
     }
 }
