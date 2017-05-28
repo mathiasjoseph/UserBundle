@@ -11,7 +11,7 @@ namespace Miky\Bundle\UserBundle\Model;
 
 use Miky\Component\Resource\Model\ResourceInterface;
 
-class Employee extends \Miky\Component\User\Model\Employee implements ResourceInterface
+class User extends \Miky\Component\User\Model\User implements ResourceInterface
 {
     protected $id;
 
