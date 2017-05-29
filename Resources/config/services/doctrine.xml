@@ -6,16 +6,14 @@
 
     <services>
         <service class="Miky\Bundle\UserBundle\Doctrine\EmployeeManager" id="miky_user.employee_manager">
-            <argument type="service" id="security.encoder_factory"/>
-            <argument type="service" id="fos_user.util.username_canonicalizer"/>
-            <argument type="service" id="fos_user.util.email_canonicalizer"/>
+            <argument type="service" id="fos_user.util.password_updater" />
+            <argument type="service" id="fos_user.util.canonical_fields_updater" />
             <argument id="doctrine.orm.entity_manager" type="service"/>
             <argument>%miky_user.model.employee.class%</argument>
         </service>
         <service class="Miky\Bundle\UserBundle\Doctrine\UserManager" id="miky_user.user_manager">
-            <argument type="service" id="security.encoder_factory"/>
-            <argument type="service" id="fos_user.util.username_canonicalizer"/>
-            <argument type="service" id="fos_user.util.email_canonicalizer"/>
+            <argument type="service" id="fos_user.util.password_updater" />
+            <argument type="service" id="fos_user.util.canonical_fields_updater" />
             <argument id="doctrine.orm.entity_manager" type="service"/>
             <argument>%miky_user.model.user.class%</argument>
         </service>

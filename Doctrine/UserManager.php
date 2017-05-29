@@ -10,27 +10,19 @@ namespace Miky\Bundle\UserBundle\Doctrine;
 
 
 use Doctrine\Common\Persistence\ObjectManager;
+use FOS\UserBundle\Util\CanonicalFieldsUpdater;
 use FOS\UserBundle\Util\CanonicalizerInterface;
+use FOS\UserBundle\Util\PasswordUpdaterInterface;
 use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
 
 class UserManager extends \FOS\UserBundle\Doctrine\UserManager
 {
 
-    /**
-     * Constructor.
-     *
-     * @param EncoderFactoryInterface $encoderFactory
-     * @param CanonicalizerInterface $usernameCanonicalizer
-     * @param CanonicalizerInterface $emailCanonicalizer
-     * @param ObjectManager $om
-     * @param string $class
-     */
-    public function __construct(EncoderFactoryInterface $encoderFactory, CanonicalizerInterface $usernameCanonicalizer, CanonicalizerInterface $emailCanonicalizer, ObjectManager $om, $class)
+    public function __construct(PasswordUpdaterInterface $passwordUpdater, CanonicalFieldsUpdater $canonicalFieldsUpdater, ObjectManager $om, $class)
     {
-        parent::__construct($encoderFactory, $usernameCanonicalizer, $emailCanonicalizer, $om, $class);
+        parent::__construct($passwordUpdater, $canonicalFieldsUpdater, $om, $class);
 
     }
-
     /**
      * @return \Doctrine\Common\Persistence\ObjectRepository
      */
