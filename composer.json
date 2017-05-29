@@ -15,6 +15,7 @@
   "require" : {
     "mikycorp/corebundle": "~1.0",
     "mikycorp/mediabundle": "~1.0",
+    "mikycorp/user": "~1.0",
     "friendsofsymfony/user-bundle": "2.0.*"
 
   },
