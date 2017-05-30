@@ -6,7 +6,8 @@
 
     <mapped-superclass name="Miky\Bundle\UserBundle\Model\User">
 
-
+        <field name="lastname" column="lastname" type="string" length="180" />
+        <field name="firstname" column="firstname" type="string" length="180" />
     </mapped-superclass>
 
 </doctrine-mapping>

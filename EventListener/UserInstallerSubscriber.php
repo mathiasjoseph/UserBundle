@@ -53,6 +53,25 @@ class UserInstallerSubscriber implements EventSubscriberInterface
     {
         $installation = $event->getInstallation();
 
+        if ($this->employeeManager->findUserByUsername("admin") == null){
+            $employee = $this->employeeManager->createUser();
+            $employee->setEmail("admin@admin.fr");
+            $employee->setPlainPassword("password");
+            $employee->setUsername("admin");
+            $employee->setEnabled(true);
+
+            $this->employeeManager->updateUser($employee);
+
+        }
+        if ($this->userManager->findUserByUsername("user") == null){
+            $customer = $this->userManager->createUser();
+            $customer->setEmail("user@user.fr");
+            $customer->setPlainPassword("password");
+            $customer->setUsername("user");
+            $customer->setEnabled(true);
+            $this->userManager->updateUser($customer);
+
+        }
 
     }
 }

@@ -22,6 +22,5 @@ class EmployeeManager extends UserManager
     public function __construct(PasswordUpdaterInterface $passwordUpdater, CanonicalFieldsUpdater $canonicalFieldsUpdater, ObjectManager $om, $class)
     {
         parent::__construct($passwordUpdater, $canonicalFieldsUpdater, $om, $class);
-
     }
 }

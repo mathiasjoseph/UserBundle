@@ -23,13 +23,4 @@ class UserManager extends \FOS\UserBundle\Doctrine\UserManager
         parent::__construct($passwordUpdater, $canonicalFieldsUpdater, $om, $class);
 
     }
-    /**
-     * @return \Doctrine\Common\Persistence\ObjectRepository
-     */
-    public function getRepository()
-    {
-        return $this->repository;
-    }
-
-
 }
