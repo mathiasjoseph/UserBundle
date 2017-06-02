@@ -1,11 +1,11 @@
 miky_user_admin_user:
     resource: |
-        alias: miky.user
+        alias: miky_user.user
         section: admin
         context: admin
         templates: MikyAdminBundle:Crud
         redirect: update
-        grid: miky_admin_user
+        grid: miky_user.admin.user
         form: miky_customer_admin
         permission: true
         vars:

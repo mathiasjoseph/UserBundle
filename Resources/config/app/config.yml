@@ -7,27 +7,25 @@ fos_user:
         sender_name: "mailer_user"
 miky_resource:
     resources:
-        miky.user:
+        miky_user.user:
             classes:
                 model: %miky_user.model.user.class%
             contexts:
-                admin:
-                    controller: Miky\Bundle\UserBundle\Controller\Backend\CustomerAdminController
-        miky.employee:
+                admin: ~
+        miky_user.employee:
             classes:
                 model: %miky_user.model.employee.class%
             contexts:
-                admin:
-                    controller: Miky\Bundle\UserBundle\Controller\Backend\CustomerAdminController
+                admin: ~
 miky_grid:
     grids:
-        miky_user_admin_user:
+        miky_user.admin.user:
             driver:
                 options:
                     class: %miky_user.model.user.class%
             sorting:
-                confirmedAt:
-                    path: confirmedAt
+                createdAt:
+                    path: createdAt
                     direction: asc
             fields:
                 email:
