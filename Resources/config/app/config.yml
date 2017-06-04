@@ -20,9 +20,7 @@ miky_resource:
 miky_grid:
     grids:
         miky_user.admin.user:
-            driver:
-                options:
-                    class: %miky_user.model.user.class%
+            resource: miky_user.user
             sorting:
                 createdAt:
                     path: createdAt
@@ -61,9 +59,7 @@ miky_grid:
 
 
         miky_user.admin.employee:
-            driver:
-                options:
-                    class: %miky_user.model.user.class%
+            resource: miky_user.employee
             sorting:
                 createdAt:
                     path: createdAt
