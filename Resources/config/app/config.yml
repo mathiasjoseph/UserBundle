@@ -30,25 +30,25 @@ miky_grid:
             fields:
                 email:
                     type: string
-                    label: miky.ui.email
+                    label: miky_user.email
                 username:
                     type: string
-                    label: miky.ui.username
+                    label: miky_user.username
                 enabled:
                     type: twig
-                    label: miky.ui.enabled
+                    label: miky_core.enabled
                     options:
                         template: MikyAdminBundle:Grid/Field:enabled.html.twig
             filters:
                 email:
                     type: string
-                    label: miky.ui.email
+                    label: miky_user.email
                 username:
                     type: string
-                    label: miky.ui.username
+                    label: miky_user.username
                 enabled:
                     type: boolean
-                    label: miky.ui.enabled
+                    label: miky_core.enabled
             actions:
                 main:
                     create:
@@ -60,36 +60,36 @@ miky_grid:
                         type: delete
 
 
-        miky_admin_employee:
+        miky_user.admin.employee:
             driver:
                 options:
-                    class: %miky_user.model.employee.class%
+                    class: %miky_user.model.user.class%
             sorting:
-                confirmedAt:
-                    path: confirmedAt
+                createdAt:
+                    path: createdAt
                     direction: asc
             fields:
                 email:
                     type: string
-                    label: miky.ui.email
+                    label: miky_user.email
                 username:
                     type: string
-                    label: miky.ui.username
+                    label: miky_user.username
                 enabled:
                     type: twig
-                    label: miky.ui.enabled
+                    label: miky_core.enabled
                     options:
                         template: MikyAdminBundle:Grid/Field:enabled.html.twig
             filters:
                 email:
                     type: string
-                    label: miky.ui.email
+                    label: miky_user.email
                 username:
                     type: string
-                    label: miky.ui.username
+                    label: miky_user.username
                 enabled:
                     type: boolean
-                    label: miky.ui.enabled
+                    label: miky_core.enabled
             actions:
                 main:
                     create:

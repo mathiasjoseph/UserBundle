@@ -33,14 +33,20 @@ class UserMenuSubscriber implements EventSubscriberInterface
             ->setLabelAttribute('icon', 'users')
         ;
         $employeeList = $employeeSubMenu
-            ->addChild('employee_list', ['route' => 'miky_user_admin_user_index'])
-            ->setLabel('miky_user.employee')
+            ->addChild('employee_list', ['route' => 'miky_user_admin_employee_index'])
+            ->setLabel('miky_user.employees')
             ->setLabelAttribute('icon', 'bullhorn')
         ;
+
         $userSubMenu = $menu
             ->addChild('user')
             ->setLabel('miky_user.users')
             ->setLabelAttribute('icon', 'users')
+        ;
+        $userList = $userSubMenu
+            ->addChild('user_list', ['route' => 'miky_user_admin_user_index'])
+            ->setLabel('miky_user.users')
+            ->setLabelAttribute('icon', 'bullhorn')
         ;
 
 

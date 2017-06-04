@@ -2,9 +2,11 @@ miky_user:
     users_list: Liste des utilisateurs
     users: Utilisateurs
     employees: Employés
+    employee: Employé
     customers: Clients
     manage_employees: Gérer les employés
-    manage_customers: Gérer les clients
+    manage_users: Gérer les utilisateurs
+    email: Email
     female: Femme
     male: Homme
     sign_in: Se connecter
