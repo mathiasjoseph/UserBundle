@@ -6,7 +6,8 @@
 
     <services>
 
-        <service id="miky_user.registration.form" factory-method="createNamed" factory-service="form.factory" class="Symfony\Component\Form\Form">
+        <service id="miky_user.registration.form"  class="Symfony\Component\Form\Form">
+            <factory  service="form.factory" method="createNamed"/>
             <argument>miky_user_registration_form</argument>
             <argument>miky_user_registration</argument>
             <argument>null</argument>
