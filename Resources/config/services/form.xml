@@ -2,14 +2,13 @@
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-
-        <service id="miky.form.type.backend.customer" class="Miky\Bundle\UserBundle\Form\Type\Backend\CustomerAdminType">
-            <tag name="form.type" alias="miky_customer_admin"/>
+        <service id="Miky\Bundle\UserBundle\Form\Type\Admin\UserAdminType">
+            <argument>%miky_user.model.user.class%</argument>
+            <tag name="form.type"/>
         </service>
-        <service id="miky.form.type.backend.user_report" class="Miky\Bundle\UserBundle\Form\Type\Backend\UserReportAdminType">
-            <tag name="form.type" alias="miky_user_report_admin"/>
+        <service id="Miky\Bundle\UserBundle\Form\Type\Admin\EmployeeAdminType">
+            <argument>%miky_user.model.employee.class%</argument>
+            <tag name="form.type"/>
         </service>
-
     </services>
-
 </container>
