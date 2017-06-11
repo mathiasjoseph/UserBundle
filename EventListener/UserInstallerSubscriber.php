@@ -10,10 +10,8 @@ namespace Miky\Bundle\UserBundle\EventListener;
 
 
 
-use Miky\Bundle\AdminBundle\Menu\AdminMenuBuilder;
 use Miky\Bundle\InstallerBundle\Event\InstallationEvent;
 use Miky\Bundle\InstallerBundle\MikyInstallerEvents;
-use Miky\Bundle\MenuBundle\Event\MenuBuilderEvent;
 use Miky\Bundle\UserBundle\Doctrine\EmployeeManager;
 use Miky\Bundle\UserBundle\Doctrine\UserManager;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;

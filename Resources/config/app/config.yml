@@ -47,6 +47,9 @@ miky_grid:
                 enabled:
                     type: boolean
                     label: miky_core.enabled
+            batch_actions:
+                delete:
+                    label: miky_core.delete
             actions:
                 main:
                     create:
@@ -86,6 +89,9 @@ miky_grid:
                 enabled:
                     type: boolean
                     label: miky_core.enabled
+            batch_actions:
+                delete:
+                    label: miky_core.delete
             actions:
                 main:
                     create:

@@ -2,6 +2,8 @@ miky_user:
     users_list: Liste des utilisateurs
     users: Utilisateurs
     employees: Employés
+    date_of_birth: Date de naissance
+    gender: Sexe
     employee: Employé
     customers: Clients
     manage_employees: Gérer les employés
@@ -53,3 +55,7 @@ miky_user:
     see_the_store: Voir la boutique
     my_store: Ma boutique
     photos: Photos
+    employee.edit: Modifier l'employé
+    employee.create: Créer un employé
+    user.edit: Modifier l'utilisateur
+    user.create: Créer un utilisateur

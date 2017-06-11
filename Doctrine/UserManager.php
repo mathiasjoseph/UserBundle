@@ -11,9 +11,7 @@ namespace Miky\Bundle\UserBundle\Doctrine;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use FOS\UserBundle\Util\CanonicalFieldsUpdater;
-use FOS\UserBundle\Util\CanonicalizerInterface;
 use FOS\UserBundle\Util\PasswordUpdaterInterface;
-use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
 
 class UserManager extends \FOS\UserBundle\Doctrine\UserManager
 {
