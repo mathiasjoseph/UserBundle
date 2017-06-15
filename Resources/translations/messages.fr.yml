@@ -2,6 +2,10 @@ miky_user:
     users_list: Liste des utilisateurs
     users: Utilisateurs
     employees: Employés
+    user: Utilisateur
+    employee: Employé
+    by_employee: Par employé
+    by_user: Par utilisateur
     date_of_birth: Date de naissance
     gender: Sexe
     employee: Employé

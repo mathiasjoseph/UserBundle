@@ -6,6 +6,10 @@
             <argument>%miky_user.model.user.class%</argument>
             <tag name="form.type"/>
         </service>
+        <service id="Miky\Bundle\UserBundle\Form\Type\EmployeeEntityType">
+            <argument>%miky_user.model.employee.class%</argument>
+            <tag name="form.type"/>
+        </service>
         <service id="Miky\Bundle\UserBundle\Form\Type\Admin\UserAdminType">
             <argument>%miky_user.model.user.class%</argument>
             <tag name="form.type"/>

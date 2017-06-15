@@ -9,6 +9,8 @@
 namespace Miky\Bundle\UserBundle\Form\Type;
 
 
+use Miky\Bundle\UserBundle\Model\User;
+use Miky\Component\User\Model\UserInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -32,10 +34,16 @@ class UserEntityType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'class' => $this->class
+            'class' => $this->class,
+            'choice_label' => function (User $user) {
+                if (!empty($user->getFirstname()) && !empty($user->getLastname())){
+                    return $user->getFirstname(). " " . $user->getLastname();
+                }else{
+                    return $user->getEmail();
+                }
+            }
         ));
     }
-
 
 
     public function getParent()
