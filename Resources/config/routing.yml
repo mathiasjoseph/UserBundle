@@ -2,6 +2,6 @@ miky_user_admin:
     resource: "@MikyUserBundle/Resources/config/routing/admin.yml"
     prefix : /
 
-#miky_user_front:
-#    resource: "@MikyUserBundle/Resources/config/routing/front.yml"
-#    prefix : /user
+miky_user_front:
+    resource: "@MikyUserBundle/Resources/config/routing/front.yml"
+    prefix : /

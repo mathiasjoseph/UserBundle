@@ -1,7 +1,7 @@
-miky_user_front_profile:
-    resource: "@MikyUserBundle/Resources/config/routing/front/profile.yml"
-    prefix : /profile
-
+#miky_user_front_profile:
+#    resource: "@MikyUserBundle/Resources/config/routing/front/profile.yml"
+#    prefix : /profile
+#
 miky_user_front_registration:
     resource: "@MikyUserBundle/Resources/config/routing/front/registration.yml"
     prefix : /registration

@@ -31,7 +31,7 @@ class EmployeeEntityType extends AbstractType
     }
 
     public function configureOptions(OptionsResolver $resolver)
-    {
+    {   parent::configureOptions($resolver);
         $resolver->setDefaults(array(
             'class' => $this->class,
             'choice_label' => function (Employee $employee) {

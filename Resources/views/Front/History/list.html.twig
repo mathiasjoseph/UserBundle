@@ -1,0 +1,57 @@
+{% extends "@MikyApp/profile_layout.html.twig" %}
+{% block main_bar %}
+
+
+    <div class="table-responsive">
+        <table class="table items">
+            <thead>
+            <tr>
+
+                <td style="width: 40%">{{ "miky.ui.name"|trans }}</td>
+                <td style="width: 10%">{{ "miky.ui.type"|trans }}</td>
+                <td style="width: 20%">{{ "miky.ui.date"|trans }}</td>
+                <td style="width: 20%"></td>
+            </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+
+    {% for item in pagination %}
+        <div class="table-responsive">
+            <table class="table items">
+                <tbody>
+                {% if item.type == 0 %}
+                    {% if item.ad is not null %}
+                <tr>
+                    <td style="width: 40%"><a href="#"><b><p>{{ miky_ad_translate_title(item.ad) }}</p></b></a></td>
+                    <td style="width: 10%"><a href="#"><b>{{ "miky.ui.ad"|trans}}</b></a></td>
+                    <td style="width: 20%">{{  item.updatedAt|ago  }}</td>
+                    <td style="width: 20%">
+                        <a href="{{ path('miky_app_customer_history_remove', {'history': item.id}) }}" class="btn btn-danger"><i
+                                    class="fa fa-trash"></i></a>
+                        <a href="{{ path('miky_app_ad_show', {'ad': item.ad.id}) }}" class="btn btn-primary"><i
+                                    class="fa fa-eye"></i></a>
+                    </td>
+                </tr>
+                {% endif %}{% endif %}
+                {% if item.type == 1 %}
+
+                {% endif %}
+                {% if item.type == 2 %}
+
+                {% endif %}
+                </tbody>
+            </table>
+        </div>
+
+    {% endfor %}
+
+    {# display navigation #}
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+
+{% endblock %}

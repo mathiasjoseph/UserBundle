@@ -1,33 +1,3 @@
-                    {#<form action="{{ path("miky_user_admin_employee_security_login_check") }}" method="post" role="form"#}
-                      {#class="login-form">#}
-                    {#<div class="alert alert-danger display-hide">#}
-                        {#<button class="close" data-close="alert"></button>#}
-                        {#<span>Entrez votre nom d'utilisateur et votre mot de passe. </span>#}
-                    {#</div>#}
-
-                    {#<div class="row">#}
-
-                        {#<div class="col-sm-8 text-right">#}
-                            {#<div class="forgot-password">#}
-                                {#<a href="javascript:;" id="forget-password" class="forget-password">Mot de passe oublié ?</a>#}
-                            {#</div>#}
-                            {#<button class="btn blue" type="submit">Connexion</button>#}
-                        {#</div>#}
-                    {#</div>#}
-                {#</form>#}
-                {#<!-- BEGIN FORGOT PASSWORD FORM -->#}
-                {#<form class="forget-form" action="javascript:;" method="post">#}
-                    {#<h3 class="font-green">Mot de passe oublié ?</h3>#}
-                    {#<p> Entrer votre adresse e-mail pour initialiser votre mot de passe. </p>#}
-                    {#<div class="form-group">#}
-                        {#<input class="form-control placeholder-no-fix form-group" type="text" autocomplete="off"#}
-                               {#placeholder="Email" name="email"/></div>#}
-                    {#<div class="form-actions">#}
-                        {#<button type="button" id="back-btn" class="btn grey btn-default">Back</button>#}
-                        {#<button type="submit" class="btn blue btn-success uppercase pull-right">Submit</button>#}
-                    {#</div>#}
-                {#</form>#}
-
 
 {% extends "@MikyAdmin/layout.html.twig" %}
 
@@ -85,7 +55,7 @@
                     {{ error.messageKey|trans(error.messageData, 'security') }}
                 </div>
             {% endif %}
-            <form id="form-login" class="p-t-15" role="form" action="{{ path("miky_user_admin_employee_security_login_check") }}" method="post">
+            <form id="form-login" class="p-t-15" role="form" action="{{ path("miky_user_admin_security_login_check") }}" method="post">
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
                 <div class="form-group form-group-default">
                     <label>{{ "miky_user.username"|trans }}</label>

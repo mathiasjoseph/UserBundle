@@ -32,6 +32,7 @@ class UserEntityType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver)
     {
+        parent::configureOptions($resolver);
         $resolver->setDefaults(array(
             'class' => $this->class,
             'choice_label' => function (User $user) {

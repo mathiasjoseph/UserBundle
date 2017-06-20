@@ -1,0 +1,10 @@
+{% extends "@MikyApp/profile_layout.html.twig" %}
+
+{% block main_bar %}
+    <div class="panel panel-default">
+        <div class="panel-heading"><b>{{ "miky.ui.certification_request_is_pending"|trans }}</b></div>
+        <div class="panel-heading"><b><a href="{{ path("miky_app_customer_certification_remove", {"certificationRequest": certificationRequest.id}) }}">Supprimer la demande </a></b></div>
+
+    </div>
+
+{% endblock %}
