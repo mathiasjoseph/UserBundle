@@ -17,10 +17,15 @@ miky_user:
     male: Homme
     sign_in: Se connecter
     password: Mot de passe
+    register: S'inscrire
+    create_account: Créer un compte
     enter_your_username: Entrez votre nom d'utilisateur
     enter_your_password: Entrez votre mot de passe
     history: Historique
     login: Connexion
+    forgot_your_password: Mot de passe oublié ?
+    email_username: Email/Nom d'utilisateur
+    remember_me: Se souvenir de moi
     sign_into_your_account: Connectez-vous à votre compte
     logout: Déconnexion
     username: Nom d'utilisateur

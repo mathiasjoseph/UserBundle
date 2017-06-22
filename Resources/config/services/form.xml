@@ -2,6 +2,11 @@
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
+        <service id="miky_user.registration.form.factory" class="Miky\Bundle\CoreBundle\Form\Factory\FormFactory">
+            <argument type="service" id="form.factory" />
+            <argument>Miky\Bundle\UserBundle\Form\Type\Front\RegistrationFormType</argument>
+            <argument>%fos_user.registration.form.validation_groups%</argument>
+        </service>
         <service id="Miky\Bundle\UserBundle\Form\Type\UserEntityType">
             <argument>%miky_user.model.user.class%</argument>
             <tag name="form.type"/>
@@ -16,6 +21,10 @@
         </service>
         <service id="Miky\Bundle\UserBundle\Form\Type\Admin\EmployeeAdminType">
             <argument>%miky_user.model.employee.class%</argument>
+            <tag name="form.type"/>
+        </service>
+        <service id="Miky\Bundle\UserBundle\Form\Type\Front\RegistrationFormType">
+            <argument>%miky_user.model.user.class%</argument>
             <tag name="form.type"/>
         </service>
     </services>

@@ -8,11 +8,18 @@
 
 namespace Miky\Bundle\UserBundle\Controller\Front;
 
+use FOS\UserBundle\Event\FilterUserResponseEvent;
+use FOS\UserBundle\Event\FormEvent;
+use FOS\UserBundle\Event\GetResponseUserEvent;
+use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Model\UserInterface;
-use Miky\Bundle\NewsletterBundle\Entity\NewsletterSubscriber;
+use Miky\Bundle\CoreBundle\Form\Factory\FormFactory;
+use Miky\Bundle\UserBundle\Doctrine\UserManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
@@ -21,53 +28,62 @@ use Symfony\Component\Security\Core\Exception\AccountStatusException;
 class RegistrationController extends Controller
 {
     /**
-     * @return RedirectResponse
+     * @param Request $request
+     *
+     * @return Response
      */
-    public function registerAction()
+    public function registerAction(Request $request)
     {
-        $user = $this->getUser();
-        if ($user instanceof UserInterface) {
-            $this->get('session')->getFlashBag()->set('sonata_user_error', 'sonata_user_already_authenticated');
-            return $this->redirect($this->generateUrl('miky_app_profile_edit'));
-        }
-        $form = $this->get('sonata.user.registration.form')->add("newsletter", CheckboxType::class, array(
-            "mapped" => false,
-            "required" => false,
-            "data" => true,
-        ));
-        $formHandler = $this->get('miky_user.registration_customer.form.handler');
+        /** @var FormFactory $formFactory */
+        $formFactory = $this->get("miky_user.registration.form.factory");
 
-        $process = $formHandler->process();
-        if ($process) {
-            $user = $form->getData();
-            $authUser = false;
-            if ($form->get("newsletter")->getData()){
-                if ($user->getEmail() != null){
-                    $subscriber = new NewsletterSubscriber();
-                    $subscriber->setEmail($user->getEmail());
-                    $em = $this->get("doctrine.orm.entity_manager");
-                    $repository = $em->getRepository(NewsletterSubscriber::class);
-                    if ($repository->findOneBy(array("email" => $subscriber->getEmail())) == null){
-                        $em->persist($subscriber);
-                        $em->flush();
-                        $this->addFlash('success', 'miky.ui.newsletter_subscribe_success');
-                    }else{
-                        $this->addFlash('success', 'miky.ui.newsletter_subscribe_yet');
-                    }
+        /** @var $userManager UserManager */
+        $userManager = $this->get('miky_user.user_manager');
+
+        /** @var $dispatcher EventDispatcherInterface */
+        $dispatcher = $this->get('event_dispatcher');
+
+        $user = $userManager->createUser();
+        $user->setEnabled(true);
+
+        $event = new GetResponseUserEvent($user, $request);
+        $dispatcher->dispatch(FOSUserEvents::REGISTRATION_INITIALIZE, $event);
+
+        if (null !== $event->getResponse()) {
+            return $event->getResponse();
+        }
+
+        $form = $formFactory->createForm();
+        $form->setData($user);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted()) {
+            if ($form->isValid()) {
+                $event = new FormEvent($form, $request);
+                $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
+
+                $userManager->updateUser($user);
+
+                if (null === $response = $event->getResponse()) {
+                    $url = $this->generateUrl('miky_user_front_registration_confirmed');
+                    $response = new RedirectResponse($url);
                 }
-            }
-                $this->get('session')->set('fos_user_send_confirmation_email/email', $user->getEmail());
-                $url = $this->generateUrl('miky_app_customer_registration_check_email');
 
-            $this->setFlash('fos_user_success', 'registration.flash.user_created');
-            $response = new RedirectResponse($url);
-            if ($authUser) {
-                $this->authenticateUser($user, $response);
+                $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
+
+                return $response;
             }
-            return $response;
+
+            $event = new FormEvent($form, $request);
+            $dispatcher->dispatch(FOSUserEvents::REGISTRATION_FAILURE, $event);
+
+            if (null !== $response = $event->getResponse()) {
+                return $response;
+            }
         }
-        $this->get('session')->set('sonata_user_redirect_url', $this->get('request')->headers->get('referer'));
-        return $this->render('@MikyUser/Frontend/Registration/register.html.twig', array(
+
+        return $this->render('@MikyUser/Front/Registration/register.html.twig', array(
             'form' => $form->createView(),
         ));
     }
@@ -112,7 +128,7 @@ class RegistrationController extends Controller
         $user->setLastLogin(new \DateTime());
         $this->get('fos_user.user_manager')->updateUser($user);
 
-        $response = $this->redirect($this->generateUrl('miky_app_customer_registration_confirmed'));
+        $response = $this->redirect($this->generateUrl('miky_user_front_registration_confirmed'));
 
         $this->authenticateUser($user, $response);
         return $response;
@@ -131,7 +147,7 @@ class RegistrationController extends Controller
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw $this->createAccessDeniedException('This user does not have access to this section.');
         }
-        return $this->render("@MikyUser/Frontend/Registration/confirmed.html.twig", array(
+        return $this->render("@MikyUser/Front/Registration/confirmed.html.twig", array(
             'user' => $user,
         ));
     }

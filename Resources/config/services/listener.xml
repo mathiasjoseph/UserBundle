@@ -13,6 +13,13 @@
             <argument type="service" id="miky_user.employee_manager"/>
             <tag name="kernel.event_subscriber"/>
         </service>
+        <service id="miky_user.listener.email_confirmation" class="Miky\Bundle\UserBundle\EventListener\EmailConfirmationListener">
+            <argument type="service" id="fos_user.mailer" />
+            <argument type="service" id="fos_user.util.token_generator" />
+            <argument type="service" id="router" />
+            <argument type="service" id="session" />
+            <tag name="kernel.event_subscriber" />
+        </service>
     </services>
 
 </container>

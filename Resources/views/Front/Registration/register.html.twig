@@ -1,4 +1,4 @@
-{% extends "@MikyApp/layout.html.twig" %}
+{% extends "@MikyUser/layout.html.twig" %}
 
 {% block content %}
     <div class="container">
@@ -44,13 +44,6 @@
                                 <span class="input-group-addon" id="basic-addon2"><i class="fa fa-user"></i></span>
                                 {{ form_widget(form.plainPassword.second, { 'attr': {"class": "form-control", "placeholder": "Répeter le mot de passe"}}) }}
                             </div>
-                        </div>
-                        <div class="form-group">
-
-                            <label>{{ form_widget(form.newsletter, { 'attr': {"class": ""}}) }} Recevoir toutes les news miky</label>
-
-
-
                         </div>
 
                     </div>

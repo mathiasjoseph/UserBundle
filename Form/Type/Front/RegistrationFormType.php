@@ -6,11 +6,16 @@
  * Time: 14:46
  */
 
-namespace Miky\Bundle\UserBundle\Form\Type\Frontend;
+namespace Miky\Bundle\UserBundle\Form\Type\Front;
 
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class RegistrationFormType extends AbstractType
@@ -28,10 +33,17 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
-            ->add('email', 'email', array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
-            ->add('plainPassword', 'repeated', array(
-                'type' => 'password',
+           ->add('username', TextType::class, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
+            ->add('email', EmailType::class, array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
+
+            ->add('firstname', TextType::class, array(
+                'label' => 'miky_core.firstname',
+            ))
+            ->add('lastname', TextType::class, array(
+                'label' => 'miky_core.lastname',
+            ))
+            ->add('plainPassword', RepeatedType::class, array(
+                'type' => PasswordType::class,
                 'options' => array('translation_domain' => 'FOSUserBundle'),
                 'first_options' => array('label' => 'form.password'),
                 'second_options' => array('label' => 'form.password_confirmation'),
@@ -40,7 +52,8 @@ class RegistrationFormType extends AbstractType
         ;
     }
 
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
             'data_class' => $this->class,
@@ -48,8 +61,4 @@ class RegistrationFormType extends AbstractType
         ));
     }
 
-    public function getName()
-    {
-        return 'miky_user_registration';
-    }
 }
