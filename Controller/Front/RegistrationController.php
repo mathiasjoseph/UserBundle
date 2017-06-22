@@ -99,11 +99,11 @@ class RegistrationController extends Controller
     {
         $email = $this->get('session')->get('fos_user_send_confirmation_email/email');
         $this->get('session')->remove('fos_user_send_confirmation_email/email');
-        $user = $this->get('fos_user.user_manager')->findUserByEmail($email);
+        $user = $this->get('miky_user.user_manager')->findUserByEmail($email);
         if (null === $user) {
             throw new NotFoundHttpException(sprintf('The user with email "%s" does not exist', $email));
         }
-        return $this->render('@MikyUser/Frontend/Registration/checkEmail.html.twig', array(
+        return $this->render('@MikyUser/Front/Registration/checkEmail.html.twig', array(
             'user' => $user,
         ));
     }
@@ -119,14 +119,14 @@ class RegistrationController extends Controller
      */
     public function confirmAction($token)
     {
-        $user = $this->get('fos_user.user_manager')->findUserByConfirmationToken($token);
+        $user = $this->get('miky_user.user_manager')->findUserByConfirmationToken($token);
         if (null === $user) {
             throw new NotFoundHttpException(sprintf('The user with confirmation token "%s" does not exist', $token));
         }
         $user->setConfirmationToken(null);
         $user->setEnabled(true);
         $user->setLastLogin(new \DateTime());
-        $this->get('fos_user.user_manager')->updateUser($user);
+        $this->get('miky_user.user_manager')->updateUser($user);
 
         $response = $this->redirect($this->generateUrl('miky_user_front_registration_confirmed'));
 
@@ -149,6 +149,7 @@ class RegistrationController extends Controller
         }
         return $this->render("@MikyUser/Front/Registration/confirmed.html.twig", array(
             'user' => $user,
+            'targetUrl' => $this->getTargetUrlFromSession(),
         ));
     }
 
@@ -172,19 +173,14 @@ class RegistrationController extends Controller
     }
 
     /**
-     * @param string $action
-     * @param string $value
+     * @return mixed
      */
-    protected function setFlash($action, $value)
+    private function getTargetUrlFromSession()
     {
-        $this->get('session')->getFlashBag()->set($action, $value);
-    }
+        $key = sprintf('_security.%s.target_path', $this->get('security.token_storage')->getToken()->getProviderKey());
 
-    /**
-     * @return string
-     */
-    protected function getEngine()
-    {
-        return $this->container->getParameter('fos_user.template.engine');
+        if ($this->get('session')->has($key)) {
+            return $this->get('session')->get($key);
+        }
     }
 }

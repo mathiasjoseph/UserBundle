@@ -10,8 +10,8 @@ namespace Miky\Bundle\UserBundle\EventListener;
 
 use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\FOSUserEvents;
-use FOS\UserBundle\Mailer\MailerInterface;
 use FOS\UserBundle\Util\TokenGeneratorInterface;
+use Miky\Bundle\MailBundle\Mailer\MailerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -67,7 +67,7 @@ class EmailConfirmationListener implements EventSubscriberInterface
 
         $this->session->set('fos_user_send_confirmation_email/email', $user->getEmail());
 
-        $url = $this->router->generate('fos_user_registration_check_email');
+        $url = $this->router->generate('miky_user_front_registration_check_email');
         $event->setResponse(new RedirectResponse($url));
     }
 }
