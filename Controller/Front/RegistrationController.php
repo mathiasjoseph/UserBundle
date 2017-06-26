@@ -17,7 +17,6 @@ use Miky\Bundle\CoreBundle\Form\Factory\FormFactory;
 use Miky\Bundle\UserBundle\Doctrine\UserManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -32,7 +31,7 @@ class RegistrationController extends Controller
      *
      * @return Response
      */
-    public function registerAction(Request $request)
+    public function registerAction(Request $request, $type=null)
     {
         /** @var FormFactory $formFactory */
         $formFactory = $this->get("miky_user.registration.form.factory");
@@ -45,7 +44,9 @@ class RegistrationController extends Controller
 
         $user = $userManager->createUser();
         $user->setEnabled(true);
-
+        if ($type != null){
+            $user->setType($type);
+        }
         $event = new GetResponseUserEvent($user, $request);
         $dispatcher->dispatch(FOSUserEvents::REGISTRATION_INITIALIZE, $event);
 

@@ -10,6 +10,7 @@
         <field name="firstname" column="firstname" type="string" length="180" nullable="true"/>
         <field name="gender"  type="string" nullable="true"/>
         <field name="dateOfBirth"  type="datetime" nullable="true"/>
+        <field name="type"  type="string" nullable="true"/>
 
     </mapped-superclass>
 

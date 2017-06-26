@@ -4,7 +4,6 @@ namespace Miky\Bundle\UserBundle\Controller\Front;
 
 
 use Miky\Bundle\UserBundle\Model\CustomerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Security;
