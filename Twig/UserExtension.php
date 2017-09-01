@@ -9,6 +9,8 @@
 namespace Miky\Bundle\UserBundle\Twig;
 
 
+use Miky\Bundle\UserBundle\Model\Employee;
+use Miky\Bundle\UserBundle\Model\User;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class UserExtension extends \Twig_Extension
@@ -32,11 +34,25 @@ class UserExtension extends \Twig_Extension
         );
     }
 
-    public function isAuthenticated()
+    public function isAuthenticated($type = null)
     {
         if (null === $this->getCurrentUser()) {
             return false;
         }else{
+            switch ($type) {
+                case "user":
+                    if ($this->getCurrentUser() instanceof User){
+                        return true;
+                    }
+                    return false;
+                    break;
+                case "employee":
+                    if ($this->getCurrentUser() instanceof Employee){
+                        return true;
+                    }
+                    return false;
+                    break;
+            }
             return true;
         }
     }

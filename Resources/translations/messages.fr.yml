@@ -7,6 +7,7 @@ miky_user:
     by_employee: Par employé
     by_user: Par utilisateur
     date_of_birth: Date de naissance
+    change_your_password: Changer votre mot de passe
     gender: Sexe
     employee: Employé
     customers: Clients

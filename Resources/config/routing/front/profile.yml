@@ -1,16 +1,8 @@
-miky_app_profile_show:
+miky_user_front_profile_show:
     path:      /{id}/show
-    defaults:  { _controller: MikyUserBundle:Frontend/Profile:showProfile }
+    defaults:  { _controller: MikyUserBundle:Front/Profile:showProfile }
 
-miky_app_profile_edit:
+miky_user_front_profile_edit:
     path:      /edit
-    defaults:  { _controller: MikyUserBundle:Frontend/Profile:editProfile }
-
-miky_app_favorite_ads_list:
-    path:      /favorite_ads/list
-    defaults:  { _controller: MikyUserBundle:Frontend/Favorite:listFavoriteAds }
-
-miky_app_favorite_ads_remove:
-    path:      /favorite_ads/{ad}/remove
-    defaults:  { _controller: MikyUserBundle:Frontend/Favorite:removeFavoriteAd }
+    defaults:  { _controller: MikyUserBundle:Front/Profile:editProfile }
 

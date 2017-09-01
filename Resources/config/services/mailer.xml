@@ -6,6 +6,7 @@
             <argument type="service" id="mailer" />
             <argument type="service" id="router" />
             <argument type="service" id="templating" />
+            <argument type="service" id="translator" />
         </service>
 
     </services>

@@ -10,9 +10,9 @@ use Symfony\Component\Routing\RouterInterface;
 
 class UserMailer extends AbstractMailer
 {
-    public function __construct($mailer, RouterInterface $router, EngineInterface $templating)
+    public function __construct($mailer, RouterInterface $router, EngineInterface $templating, $translator)
     {
-        parent::__construct($mailer, $router, $templating);
+        parent::__construct($mailer, $router, $templating, $translator);
     }
 
     public function sendConfirmationEmailMessage(UserInterface $user)

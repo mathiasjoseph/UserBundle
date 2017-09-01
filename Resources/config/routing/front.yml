@@ -10,6 +10,10 @@ miky_user_front_resetting:
     resource: "@MikyUserBundle/Resources/config/routing/front/resetting.yml"
     prefix : /resetting
 
+miky_user_front_change_password:
+    resource: "@MikyUserBundle/Resources/config/routing/front/change_password.yml"
+    prefix : /
+
 miky_user_front_security:
     resource: "@MikyUserBundle/Resources/config/routing/front/security.yml"
     prefix : /
