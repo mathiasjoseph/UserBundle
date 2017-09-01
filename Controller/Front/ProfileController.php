@@ -1,9 +1,10 @@
 <?php
 
-namespace Miky\Bundle\UserBundle\Controller\Frontend;
+namespace Miky\Bundle\UserBundle\Controller\Front;
 
 use FOS\UserBundle\Model\UserInterface;
 use Miky\Bundle\UserBundle\Entity\Customer;
+use Miky\Bundle\UserBundle\Model\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -38,19 +39,19 @@ class ProfileController extends Controller
      */
     public function editProfileAction(Request $request)
     {
-        $customer = $this->getUser();
-        if (!is_object($customer) || !$customer instanceof Customer) {
-            return $this->redirectToRoute("miky_app_customer_security_login");
+        $user = $this->getUser();
+        if (!is_object($user) || !$user instanceof User) {
+            return $this->redirectToRoute("miky_user_front_security_login");
         }
 
-        $customerManager = $this->container->get('miky_customer_manager');
-        $customerManager->getRepository()->findOneById($customer->getId());
+        $userManager = $this->container->get('miky_user_manager');
+        $userManager->getRepository()->findOneById($customer->getId());
         $form = $this->createForm('miky_customer_profile_front', $customer);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $user = $form->getData();
-            $customerManager->updateUser($user);
+            $userManager->updateUser($user);
         }
 
         return $this->render('MikyUserBundle:Profile:edit.html.twig', array(

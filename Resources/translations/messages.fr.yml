@@ -22,6 +22,7 @@ miky_user:
     create_account: Créer un compte
     enter_your_username: Entrez votre nom d'utilisateur
     enter_your_password: Entrez votre mot de passe
+    my_profile: Mon profil
     history: Historique
     login: Connexion
     forgot_your_password: Mot de passe oublié ?
