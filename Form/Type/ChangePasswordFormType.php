@@ -11,9 +11,7 @@
 
 namespace Miky\Bundle\UserBundle\Form\Type;
 
-use FOS\UserBundle\Util\LegacyFormHelper;
 use Miky\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
-use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
