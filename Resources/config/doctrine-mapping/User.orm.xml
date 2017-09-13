@@ -11,6 +11,7 @@
         <field name="gender"  type="string" nullable="true"/>
         <field name="type"  type="string" nullable="true"/>
         <field name="dateOfBirth"  type="datetime" nullable="true"/>
+        <field name="website" type="string" nullable="true"/>
     </mapped-superclass>
 
 </doctrine-mapping>

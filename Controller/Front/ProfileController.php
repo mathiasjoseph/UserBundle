@@ -44,9 +44,11 @@ class ProfileController extends Controller
             return $this->redirectToRoute("miky_user_front_security_login");
         }
 
-        $userManager = $this->container->get('miky_user_manager');
-        $userManager->getRepository()->findOneById($customer->getId());
-        $form = $this->createForm('miky_customer_profile_front', $customer);
+        $userManager = $this->container->get('miky_user.user_manager');
+
+        $formFactory = $this->get('miky_user.profile.form.factory');
+        $form = $formFactory->createForm($user);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -54,7 +56,7 @@ class ProfileController extends Controller
             $userManager->updateUser($user);
         }
 
-        return $this->render('MikyUserBundle:Profile:edit.html.twig', array(
+        return $this->render('MikyUserBundle:Front/Profile:edit.html.twig', array(
             'form' => $form->createView(),
         ));
     }

@@ -16,7 +16,7 @@ use Miky\Bundle\UserBundle\Entity\Customer;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-class LoadCustomerData extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
+class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
 {
     /**
      * @var ContainerInterface
@@ -31,15 +31,15 @@ class LoadCustomerData extends AbstractFixture implements OrderedFixtureInterfac
     public function load(ObjectManager $manager)
     {
         $userManager = $this->container->get('miky_customer_manager');
-        $customer = new Customer();
-        $customer->setUsername('admin');
-        $customer->setPlainPassword('test');
-        $customer->setEmail('jhyfy');
-        $customer->setEnabled(true);
+        $user = new Customer();
+        $user->setUsername('admin');
+        $user->setPlainPassword('test');
+        $user->setEmail('jhyfy');
+        $user->setEnabled(true);
 
-        $userManager->updateUser($customer);
+        $userManager->updateUser($user);
 
-        $this->addReference('customer', $customer);
+        $this->addReference('customer', $user);
     }
 
     public function getOrder()
