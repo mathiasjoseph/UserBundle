@@ -10,6 +10,7 @@ miky_user:
     change_your_password: Changer votre mot de passe
     gender: Sexe
     employee: Employé
+    choose_user: Choisir l'utilisateur
     customers: Clients
     manage_employees: Gérer les employés
     manage_users: Gérer les utilisateurs

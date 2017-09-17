@@ -34,12 +34,13 @@ class UserEntityType extends AbstractType
     {
         parent::configureOptions($resolver);
         $resolver->setDefaults(array(
+            'placeholder' => "miky_user.choose_user",
             'class' => $this->class,
             'choice_label' => function (User $user) {
                 if (!empty($user->getFirstname()) && !empty($user->getLastname())){
                     return $user->getFirstname(). " " . $user->getLastname();
                 }else{
-                    return $user->getEmail();
+                    return $user->getUsername();
                 }
             }
         ));
