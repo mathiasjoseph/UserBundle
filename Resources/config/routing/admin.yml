@@ -10,7 +10,7 @@ miky_user_admin_user:
         templates: MikyAdminBundle:Crud
         redirect: update
         grid: miky_user.admin.user
-        form: Miky\Bundle\UserBundle\Form\Type\Admin\UserAdminType
+        form: miky_user.admin.user.form.factory
         permission: true
         vars:
             all:

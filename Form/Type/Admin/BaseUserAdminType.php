@@ -11,6 +11,7 @@ namespace Miky\Bundle\UserBundle\Form\Type\Admin;
 
 use Miky\Bundle\CoreBundle\Form\Type\DateType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -34,6 +35,9 @@ class BaseUserAdminType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('enabled', CheckboxType::class, array(
+                "label" => "miky_core.enabled"
+            ))
             ->add('email', EmailType::class, array(
                 "label" => 'miky_core.email'
             ))
@@ -51,12 +55,14 @@ class BaseUserAdminType extends AbstractType
                 'first_options' => array('label' => 'form.password'),
                 'second_options' => array('label' => 'form.password_confirmation'),
                 'invalid_message' => 'fos_user.password.mismatch',
+                "required" => false,
             ))
             ->add('gender', ChoiceType::class, array(
                 "choices" => array(
                     "miky_user.female" => "f",
                     "miky_user.male" => "m",),
-                "label" => 'miky_user.gender'
+                "label" => 'miky_user.gender',
+                "required" => false,
             ))
             ->add('dateOfBirth', DateType::class, array(
                 "label" => 'miky_user.date_of_birth',

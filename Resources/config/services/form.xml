@@ -7,6 +7,10 @@
             <argument>Miky\Bundle\UserBundle\Form\Type\Front\RegistrationFormType</argument>
             <argument>%fos_user.registration.form.validation_groups%</argument>
         </service>
+        <service id="miky_user.admin.user.form.factory" class="Miky\Bundle\CoreBundle\Form\Factory\FormFactory">
+            <argument type="service" id="form.factory" />
+            <argument>Miky\Bundle\UserBundle\Form\Type\Admin\UserAdminType</argument>
+        </service>
         <service id="miky_user.change_password.form.factory" class="Miky\Bundle\CoreBundle\Form\Factory\FormFactory">
             <argument type="service" id="form.factory" />
             <argument>Miky\Bundle\UserBundle\Form\Type\ChangePasswordFormType</argument>
@@ -15,10 +19,7 @@
             <argument type="service" id="form.factory" />
             <argument>Miky\Bundle\UserBundle\Form\Type\Front\UserProfileFormType</argument>
         </service>
-        <service id="Miky\Bundle\UserBundle\Form\Type\Front\UserProfileType">
-            <argument>%miky_user.model.user.class%</argument>
-            <tag name="form.type"/>
-        </service>
+
         <service id="Miky\Bundle\UserBundle\Form\Type\ChangePasswordFormType">
             <argument>%miky_user.model.user.class%</argument>
             <tag name="form.type"/>
