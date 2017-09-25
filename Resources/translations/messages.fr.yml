@@ -71,3 +71,14 @@ miky_user:
     employee.create: Créer un employé
     user.edit: Modifier l'utilisateur
     user.create: Créer un utilisateur
+mail:
+    registration.subject: 'Bienvenue %username% !'
+    registration.message: |
+            Bonjour %username% !
+
+            Pour valider votre compte utilisateur, merci de vous rendre sur %confirmationUrl%
+
+            Ce lien ne peut être utilisé qu'une seule fois pour valider votre compte.
+
+            Cordialement,
+            L'équipe

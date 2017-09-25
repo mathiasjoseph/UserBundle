@@ -10,33 +10,43 @@ use Symfony\Component\Routing\RouterInterface;
 
 class UserMailer extends AbstractMailer
 {
-    public function __construct($mailer, RouterInterface $router, EngineInterface $templating, $translator)
+    protected $parameters;
+    protected $mail;
+
+    public function __construct($mailer, RouterInterface $router, EngineInterface $templating, $translator, $mail)
     {
         parent::__construct($mailer, $router, $templating, $translator);
+        $this->mail = $mail;
     }
 
     public function sendConfirmationEmailMessage(UserInterface $user)
     {
-        $url = $this->router->generate("miky_user_front_registration_confirm", array('token' => $user->getConfirmationToken()), UrlGeneratorInterface::ABSOLUTE_URL);
-
+        $url = $this->router->generate('seestock_app_customer_registration_confirm', array('token' => $user->getConfirmationToken()), true);
         $rendered = $this->templating->render("@MikyUser/Mail/registration_confirm.html.twig", array(
             'user' => $user,
             'confirmationUrl' => $url,
 
         ));
-        $this->sendEmailMessage($rendered, "no-reply@miky.com", $user->getEmail());
+        $subject = $this->translator->trans("registration.email.subject",
+            array("%username%" => $user->getUsername(), "%confirmationUrl%" => $url),
+            'FOSUserBundle'
+        );
+        $this->sendEmailMessage($rendered, $this->mail, $user->getEmail(), $subject);
     }
 
 
     public function sendResettingEmailMessage(UserInterface $user)
     {
-        $url = $this->router->generate('miky_app_customer_resetting_reset', array('token' => $user->getConfirmationToken()), true);
-        $rendered = $this->templating->render("@MikyUser/Frontend/Resetting/email.txt.twig", array(
+        $url = $this->router->generate('seestock_app_customer_resetting_reset', array('token' => $user->getConfirmationToken()), true);
+        $rendered = $this->templating->render("@SeestockApp/Front/User/Resetting/email.html.twig", array(
             'user' => $user,
             'confirmationUrl' => $url
         ));
-        $this->sendEmailMessage($rendered, "no-reply@miky.com", $user->getEmail());
+        $subject = $this->translator->trans("resetting.email.subject",
+            array("%username%" => $user->getUsername(), "%confirmationUrl%" => $url),
+            'FOSUserBundle'
+        );
+        $this->sendEmailMessage($rendered, $this->mail, $user->getEmail(), $subject);
     }
-
 
 }

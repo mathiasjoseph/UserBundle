@@ -35,12 +35,6 @@ class RegistrationFormType extends AbstractType
            ->add('username', TextType::class, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
             ->add('email', EmailType::class, array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
 
-            ->add('firstname', TextType::class, array(
-                'label' => 'miky_core.firstname',
-            ))
-            ->add('lastname', TextType::class, array(
-                'label' => 'miky_core.lastname',
-            ))
             ->add('plainPassword', RepeatedType::class, array(
                 'type' => PasswordType::class,
                 'options' => array('translation_domain' => 'FOSUserBundle'),
