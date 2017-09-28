@@ -9,6 +9,9 @@
             <argument type="service" id="translator"/>
             <argument>%mail.no_reply%</argument>
         </service>
+        <service id="miky_user.predefined_mail.user_registration" class="Miky\Bundle\UserBundle\Mailer\PredefinedMail\UserRegistrationSchema">
+           <tag name="miky_mail_predefined_schema" alias="user_registration"/>
+        </service>
 
     </services>
 </container>
