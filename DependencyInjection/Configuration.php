@@ -2,7 +2,8 @@
 
 namespace Miky\Bundle\UserBundle\DependencyInjection;
 
-use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
+use Miky\Bundle\UserBundle\Doctrine\Entity\Employee;
+use Miky\Bundle\UserBundle\Doctrine\Entity\User;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
@@ -13,6 +14,17 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
  */
 class Configuration implements ConfigurationInterface
 {
+
+    private $useDefaultEntities;
+
+    /**
+     * Configuration constructor.
+     */
+    public function __construct($useDefaultEntities)
+    {
+        $this->useDefaultEntities = $useDefaultEntities;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -20,19 +32,20 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('miky_user');
-        $rootNode
-            ->children()
-            ->scalarNode('user_class')->isRequired()->cannotBeEmpty()->end()
-            ->scalarNode('employee_class')->isRequired()->cannotBeEmpty()->end()
-            ->end();
+        if ($this->useDefaultEntities){
+            $rootNode
+                ->children()
+                ->scalarNode('user_class')->defaultValue(User::class)->cannotBeEmpty()->end()
+                ->scalarNode('employee_class')->defaultValue(Employee::class)->cannotBeEmpty()->end()
+                ->end();
+        }else{
+            $rootNode
+                ->children()
+                ->scalarNode('employee_class')->isRequired()->cannotBeEmpty()->end()
+                ->scalarNode('user_class')->isRequired()->cannotBeEmpty()->end()
+                ->end();
+        }
 
         return $treeBuilder;
-    }
-
-    /**
-     * @param ArrayNodeDefinition $node
-     */
-    private function addRulesSection(ArrayNodeDefinition $node){
-        /** @TODO */
     }
 }
