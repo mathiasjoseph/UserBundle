@@ -22,7 +22,7 @@ class MikyUserExtension extends AbstractCoreExtension implements PrependExtensio
     {
         $configuration = new Configuration($container->getParameter("miky_user.use_default_entities"));
         $config = $this->processConfiguration($configuration, $configs);
-        $this->addBundleRequired("FOSUserBundle", $container);
+        $this->setBundlesRequired(array("FOSUserBundle"), $container);
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
 
