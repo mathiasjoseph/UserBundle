@@ -28,19 +28,21 @@ class UserProfileType extends AbstractResourceType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstname', TextType::class)
-            ->add('lastname', TextType::class)
-            ->add('email', TextType::class)
-            ->add('username', TextType::class)
-            ->add('plainPassword', RepeatedType::class, array(
-                'type' => PasswordType::class,
-                'first_options'  => array('label' => 'Password'),
-                'second_options' => array('label' => 'Repeat Password'),
+            ->add('firstname', TextType::class, array(
+                "label" => 'miky_core.firstname',
                 "required" => false
             ))
-            ->add('profileImage', 'miky_media_type', array(
-                'provider' => 'miky.media.provider.image',
-                'context'  => 'customer'
+            ->add('lastname', TextType::class, array(
+                "label" => 'miky_core.lastname',
+                "required" => false
+            ))
+            ->add('phone', TextType::class, array(
+                "label" => 'miky_core.phone',
+                "required" => false
+            ))
+            ->add('email', TextType::class, array(
+                "label" => 'miky_core.email',
+                "disabled" => true
             ))
         ;
     }

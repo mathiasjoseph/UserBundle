@@ -58,6 +58,7 @@ class ProfileController extends Controller
 
         return $this->render('MikyUserBundle:Front/Profile:edit.html.twig', array(
             'form' => $form->createView(),
+            'user' => $user
         ));
     }
 

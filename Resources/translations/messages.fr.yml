@@ -19,6 +19,7 @@ miky_user:
     male: Homme
     sign_in: Se connecter
     password: Mot de passe
+    repeat_password: Répéter le mot de passe
     register: S'inscrire
     create_account: Créer un compte
     enter_your_username: Entrez votre nom d'utilisateur
@@ -52,12 +53,6 @@ miky_user:
     stores: Boutiques
     store_list: Liste des boutiques
     manage_store: Gestion des boutiques
-    certification_request: Demande de certification
-    certification_request_list: Liste des demandes
-    certification_request_pending_list: Liste des demandes en attente
-    certification_requests: Demandes de certification
-    manage_certification_request: Gérer les demandes de certification
-    companyId: SIREN
     activity: Activité
     companyName: Nom de l'entreprise
     companyDescription: Description de l'entreprise

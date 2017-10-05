@@ -41,6 +41,9 @@ class BaseUserAdminType extends AbstractType
             ->add('email', EmailType::class, array(
                 "label" => 'miky_core.email'
             ))
+            ->add('username', TextType::class, array(
+                "label" => 'miky_user.username'
+            ))
             ->add('lastname', TextType::class, array(
                 "label" => 'miky_core.lastname',
                 "required" => false,
