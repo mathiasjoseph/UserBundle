@@ -1,8 +1,0 @@
-miky_user_front_profile_show:
-    path:      /{id}/show
-    defaults:  { _controller: MikyUserBundle:Front/Profile:showProfile }
-
-miky_user_front_profile_edit:
-    path:      /edit
-    defaults:  { _controller: MikyUserBundle:Front/Profile:editProfile }
-

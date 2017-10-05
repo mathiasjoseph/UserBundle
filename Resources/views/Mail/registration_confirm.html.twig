@@ -1,8 +1,0 @@
-{% extends "@MikyMail/Mail/layout.html.twig" %}
-
-
-{% block body_text %}
-{{ 'mail.registration.message'|trans({'%username%': user.username, '%confirmationUrl%': confirmationUrl}) }}
-
-{% endblock %}
-
