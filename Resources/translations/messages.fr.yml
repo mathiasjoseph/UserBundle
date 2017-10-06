@@ -1,0 +1,79 @@
+miky_user:
+    users_list: Liste des utilisateurs
+    users: Utilisateurs
+    employees: Employés
+    user: Utilisateur
+    employee: Employé
+    by_employee: Par employé
+    by_user: Par utilisateur
+    date_of_birth: Date de naissance
+    change_your_password: Changer votre mot de passe
+    gender: Sexe
+    employee: Employé
+    choose_user: Choisir l'utilisateur
+    customers: Clients
+    manage_employees: Gérer les employés
+    manage_users: Gérer les utilisateurs
+    email: Email
+    female: Femme
+    male: Homme
+    sign_in: Se connecter
+    password: Mot de passe
+    repeat_password: Répéter le mot de passe
+    register: S'inscrire
+    create_account: Créer un compte
+    enter_your_username: Entrez votre nom d'utilisateur
+    enter_your_password: Entrez votre mot de passe
+    my_profile: Mon profil
+    history: Historique
+    login: Connexion
+    forgot_your_password: Mot de passe oublié ?
+    email_username: Email/Nom d'utilisateur
+    remember_me: Se souvenir de moi
+    sign_into_your_account: Connectez-vous à votre compte
+    logout: Déconnexion
+    username: Nom d'utilisateur
+    profile_image: Photo de profil
+    report_by: Signalé par
+    user_reports: Signalements
+    manage_user_report: Gérer les signalements
+    create_my_store: Créer ma boutique
+    my_store: Ma boutique
+    anonymous: Anonyme
+    report: Signaler
+    add_to_favorites: Ajouter au favoris
+    print: Imprimer
+    fraud: Fraude
+    duplicate_ad: Annonce en double
+    wrong_category: Mauvaise catégorie
+    already_sold: Déja vendu
+    vulgarity: Vulgarité
+    other_abuse: Autre abus
+    store: Boutique
+    stores: Boutiques
+    store_list: Liste des boutiques
+    manage_store: Gestion des boutiques
+    activity: Activité
+    companyName: Nom de l'entreprise
+    companyDescription: Description de l'entreprise
+    become_certified: Devenir Certified
+    certification_request_is_pending: Demande de certification en cours d'études
+    contact_the_announcer: Contacter l'annonceur
+    see_the_store: Voir la boutique
+    my_store: Ma boutique
+    photos: Photos
+    employee.edit: Modifier l'employé
+    employee.create: Créer un employé
+    user.edit: Modifier l'utilisateur
+    user.create: Créer un utilisateur
+mail:
+    registration.subject: 'Bienvenue %username% !'
+    registration.message: |
+            Bonjour %username% !
+
+            Pour valider votre compte utilisateur, merci de vous rendre sur %confirmationUrl%
+
+            Ce lien ne peut être utilisé qu'une seule fois pour valider votre compte.
+
+            Cordialement,
+            L'équipe

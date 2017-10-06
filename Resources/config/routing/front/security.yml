@@ -1,0 +1,11 @@
+miky_user_front_security_login:
+    path:      /login
+    defaults:  { _controller: MikyUserBundle:Front/Security:login }
+
+miky_user_front_security_logout:
+    path:      /logout
+    defaults:  { _controller: MikyUserBundle:Front/Security:logout }
+
+miky_user_front_security_login_check:
+    path:      /login_check
+    defaults:  { _controller: MikyUserBundle:Front/Security:check }

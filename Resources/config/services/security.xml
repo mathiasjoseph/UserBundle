@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services
+        http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="miky_user.user_provider.username" class="Miky\Bundle\UserBundle\Security\UserProvider" public="false">
+            <argument type="service" id="miky_user.user_manager" />
+        </service>
+
+        <service id="miky_user.user_provider.username_email" class="Miky\Bundle\UserBundle\Security\EmailUserProvider" public="false">
+            <argument type="service" id="miky_user.user_manager" />
+        </service>
+
+        <service id="miky_user.employee_provider.username" class="Miky\Bundle\UserBundle\Security\EmployeeProvider" public="false">
+            <argument type="service" id="miky_user.employee_manager" />
+        </service>
+
+        <service id="miky_user.employee_provider.username_email" class="Miky\Bundle\UserBundle\Security\EmailEmployeeProvider" public="false">
+            <argument type="service" id="miky_user.employee_manager" />
+        </service>
+    </services>
+</container>

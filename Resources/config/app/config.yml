@@ -1,0 +1,103 @@
+fos_user:
+    db_driver: orm # other valid values are 'mongodb' and 'couchdb'
+    firewall_name: main
+    user_class: "null"
+    from_email:
+        address: "mailer_user"
+        sender_name: "mailer_user"
+miky_resource:
+    resources:
+        miky_user.user:
+            classes:
+                model: %miky_user.model.user.class%
+            contexts:
+                admin: ~
+        miky_user.employee:
+            classes:
+                model: %miky_user.model.employee.class%
+            contexts:
+                admin: ~
+miky_grid:
+    grids:
+        miky_user.admin.user:
+            resource: miky_user.user
+            sorting:
+                createdAt:
+                    path: createdAt
+                    direction: asc
+            fields:
+                email:
+                    type: string
+                    label: miky_user.email
+                username:
+                    type: string
+                    label: miky_user.username
+                enabled:
+                    type: twig
+                    label: miky_core.enabled
+                    options:
+                        template: MikyAdminBundle:Grid/Field:enabled.html.twig
+            filters:
+                email:
+                    type: string
+                    label: miky_user.email
+                username:
+                    type: string
+                    label: miky_user.username
+                enabled:
+                    type: boolean
+                    label: miky_core.enabled
+            batch_actions:
+                delete:
+                    label: miky_core.delete
+            actions:
+                main:
+                    create:
+                        type: create
+                item:
+                    update:
+                        type: update
+                    delete:
+                        type: delete
+
+
+        miky_user.admin.employee:
+            resource: miky_user.employee
+            sorting:
+                createdAt:
+                    path: createdAt
+                    direction: asc
+            fields:
+                email:
+                    type: string
+                    label: miky_user.email
+                username:
+                    type: string
+                    label: miky_user.username
+                enabled:
+                    type: twig
+                    label: miky_core.enabled
+                    options:
+                        template: MikyAdminBundle:Grid/Field:enabled.html.twig
+            filters:
+                email:
+                    type: string
+                    label: miky_user.email
+                username:
+                    type: string
+                    label: miky_user.username
+                enabled:
+                    type: boolean
+                    label: miky_core.enabled
+            batch_actions:
+                delete:
+                    label: miky_core.delete
+            actions:
+                main:
+                    create:
+                        type: create
+                item:
+                    update:
+                        type: update
+                    delete:
+                        type: delete

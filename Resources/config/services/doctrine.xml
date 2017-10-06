@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services
+        http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service class="Miky\Bundle\UserBundle\Doctrine\EmployeeManager" id="miky_user.employee_manager">
+            <argument type="service" id="fos_user.util.password_updater" />
+            <argument type="service" id="fos_user.util.canonical_fields_updater" />
+            <argument id="doctrine.orm.entity_manager" type="service"/>
+            <argument id="security.token_storage" type="service"/>
+            <argument>%miky_user.model.employee.class%</argument>
+        </service>
+        <service class="Miky\Bundle\UserBundle\Doctrine\UserManager" id="miky_user.user_manager">
+            <argument type="service" id="fos_user.util.password_updater" />
+            <argument type="service" id="fos_user.util.canonical_fields_updater" />
+            <argument id="doctrine.orm.entity_manager" type="service"/>
+            <argument id="security.token_storage" type="service"/>
+            <argument>%miky_user.model.user.class%</argument>
+        </service>
+        <service class="Miky\Bundle\UserBundle\Doctrine\EventListener\UserPersonSubscriber"
+                 id="miky_user.doctrine.user_person_subscriber">
+            <argument type="string">%miky_user.model.user.class%</argument>
+            <argument type="string">%miky_user.model.employee.class%</argument>
+            <tag name="doctrine.event_subscriber"/>
+        </service>
+    </services>
+</container>
