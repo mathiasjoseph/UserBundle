@@ -15,6 +15,7 @@ use Miky\Bundle\LocationBundle\Form\Type\GoogleGeocodingType;
 use Miky\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -40,7 +41,7 @@ class UserProfileType extends AbstractResourceType
                 "label" => 'miky_core.phone',
                 "required" => false
             ))
-            ->add('email', TextType::class, array(
+            ->add('email', EmailType::class, array(
                 "label" => 'miky_core.email',
                 "disabled" => true
             ))
