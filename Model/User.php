@@ -10,7 +10,11 @@ namespace Miky\Bundle\UserBundle\Model;
 
 
 use Miky\Component\Resource\Model\ResourceInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
+/**
+ * @UniqueEntity(fields={"email", "username"})
+ */
 class User extends \Miky\Component\User\Model\User implements ResourceInterface
 {
     protected $id;

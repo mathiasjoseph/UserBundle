@@ -17,6 +17,7 @@ miky_user:
     email: Email
     female: Femme
     male: Homme
+    when_a_user_registers: Lorsque qu'un utilisateur s'inscrit
     sign_in: Se connecter
     password: Mot de passe
     repeat_password: Répéter le mot de passe
